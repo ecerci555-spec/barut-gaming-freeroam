@@ -21,3 +21,15 @@ GitHub deposunun Settings > Pages alanında **Deploy from a branch**, **main**, 
 - Web ziyaretçi sayacı whos.amung.us üçüncü taraf hizmeti üzerinden sunulur: https://whos.amung.us/legal/privacy/
 
 - Web sitesinde admin butonu yoktur; statik GitHub Pages gerçek admin oturumu sunmadığından herkese açık dashboard kaldırılmıştır. GitHub Issues içeriği hâlâ herkese açık görüntülenebilir; tam gizlilik için ayrı yetkili backend/veritabanı gerekir.
+
+## V5 - Bu Haftaki Barut Gaming'den Kareler (oyuncu video vitrini)
+
+Site: https://ecerci555-spec.github.io/barut-gaming-freeroam/#haftanin-kareleri
+
+1. Oyuncu sitede kendi nickini, başlığı ve açıklamayı girer; **Video Gönder / Dosya Yükle** ile GitHub Issue formunu açar. GitHub hesabıyla giriş gerekir.
+2. GitHub formuna MP4/MOV/WebM video yükler (ücretsiz depolarda video dosyası için 10 MB limit olabilir) veya YouTube liste dışı bağlantısı paylaşır. Gönderi `video-basvuru` etiketi alır.
+3. Yönetici https://github.com/ecerci555-spec/barut-gaming-freeroam/issues?q=is%3Aissue+label%3Avideo-basvuru listesinden videoyu inceler. Uygunsa **Labels > vitrin-onaylandi** ekler.
+4. GitHub Actions `.github/workflows/weekly-videos.yml` çalışır, onaylı içerikleri `data/weekly-videos.json` dosyasına yazar. Site bu JSON'u doğrudan GitHub Raw üstünden okur (GitHub Actions bot push'u GitHub Pages dağıtımını tetiklemediği için).
+5. İstenmeyen içerik için `vitrin-onaylandi` etiketini kaldır. GitHub Actions listeyi otomatik yeniler. Bir hafta = Türkiye saatine göre Pazartesi-Pazar. Yalnızca o hafta açılan onaylı video başvuruları listelenir.
+
+**Güvenlik/gizlilik:** GitHub deposu ve Issues herkese açıktır. Başvurular, dosyalar ve onaysız içerikler de doğrudan GitHub üzerinden görüntülenebilir; ana sayfanın onay filtresi özel bir dosya kasası değildir. Gerçekten gizli başvurular veya GitHub hesabı gerektirmeyen video yüklemesi için ayrı güvenli sunucu/veritabanı ve depolama servisi gerekir. Şifreler istemci dosyalarında tutulmaz.
