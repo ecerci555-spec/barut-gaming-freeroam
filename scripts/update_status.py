@@ -8,6 +8,8 @@ import urllib.request
 
 IP = "185.158.151.103"
 PORT = 22003
+HTTP_PORT = 22005
+PLAYERS_URL = f"http://{IP}:{HTTP_PORT}/barut_website_bridge/players"
 API_URL = "https://mtasa.com/api/"
 OUT = pathlib.Path("data/status.json")
 
@@ -18,6 +20,8 @@ def main():
         "online": None,
         "players": None,
         "maxPlayers": None,
+        "playerNames": [],
+        "playerNamesAvailable": False,
         "serverName": None,
         "source": "MTA master server list (https://mtasa.com/api/)",
         "checkedAt": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
@@ -55,6 +59,37 @@ def main():
             print(f"Barut Gaming: {status['players']}/{status['maxPlayers']} online")
     except (urllib.error.URLError, TimeoutError, OSError, ValueError, json.JSONDecodeError) as exc:
         print(f"Could not query MTA server status: {exc}; marking unavailable.")
+    # Optional nicknames: only available after the MTA Lua bridge is installed.
+    # This endpoint contains public in-game nicknames ONLY (no IPs, serials, accounts).
+    if status["online"] is True:
+        try:
+            request = urllib.request.Request(
+                PLAYERS_URL,
+                headers={"User-Agent": "BarutGamingWebsite/1.0", "Accept": "application/json"},
+            )
+            with urllib.request.urlopen(request, timeout=8) as response:
+                body = response.read(64 * 1024)
+            names_json = json.loads(body)
+            # MTA toJSON can wrap tables in a top-level array.
+            if isinstance(names_json, list) and len(names_json) == 1:
+                names_json = names_json[0]
+            if not isinstance(names_json, dict):
+                raise ValueError("Unexpected MTA roster response")
+            raw_names = names_json.get("players")
+            if not isinstance(raw_names, list):
+                raise ValueError("Expected players array")
+            names = []
+            for name in raw_names[:100]:
+                if isinstance(name, str):
+                    name = name.strip()
+                    if name and len(name) <= 64:
+                        names.append(name)
+            status["playerNames"] = names
+            status["playerNamesAvailable"] = True
+            print(f"Roster bridge returned {len(names)} public nicknames")
+        except (urllib.error.URLError, TimeoutError, OSError, ValueError, json.JSONDecodeError) as exc:
+            print(f"Roster bridge unavailable (this is optional): {exc}")
+
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(status, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
