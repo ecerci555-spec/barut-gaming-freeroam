@@ -55,7 +55,7 @@
   </script>
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="stylesheet" href="assets/css/style.css?v=20261120-navigation-v5">
-  <link rel="stylesheet" href="assets/css/weekly-videos.css?v=1">
+  <link rel="stylesheet" href="assets/css/weekly-videos.css?v=2">
   <link rel="stylesheet" href="assets/css/account-v2.css?v=20261120a">
   <title>Barut Gaming | MTA:SA Freeroam Sunucusu – Oyna ve Katıl</title>
 </head>
@@ -191,7 +191,12 @@
             <label for="weeklyYoutube">YOUTUBE VİDEO LİNKİ (İSTEĞE BAĞLI)</label>
             <input id="weeklyYoutube" name="youtube" type="url" maxlength="300" placeholder="https://youtu.be/...">
             <p id="weeklyVideoHelp" class="weekly-video-help" aria-live="polite"></p>
-            <button class="btn btn--primary" type="submit">🎥 VİDEO GÖNDER / DOSYA YÜKLE ↗</button>
+            <div class="weekly-video-upload-hint" aria-label="MP4 video gönderme bilgisi">
+              <strong>🎬 MP4 VİDEO YÜKLEME</strong>
+              <p>MP4 dosyanı bilgisayarından veya telefonundan yükleyebilirsin. Aşağıdaki butona basınca açılan GitHub formunda <b>“MP4 / Video Dosyası Yükle”</b> alanına dosyanı seç veya sürükle.</p>
+              <small>Ücretsiz GitHub planlarında video başına genellikle 10 MB sınır bulunur. Daha uzun videolar için YouTube bağlantısı kullan.</small>
+            </div>
+            <button class="btn btn--primary" type="submit">🎬 MP4 VİDEO GÖNDER / YÜKLE ↗</button>
             <small>Devam ettiğinde <strong>GitHub formu</strong> açılır. Video dosyanı orada seçerek gönderimi tamamlayabilirsin. Web sitesinde doğrudan dosya yüklenmez.</small>
           </form>
         </div>
@@ -350,7 +355,7 @@
   <script src="config.js"></script>
   <script src="assets/js/app.js"></script>
   <script src="assets/js/gallery.js" defer></script>
-  <script src="assets/js/weekly-videos.js?v=1" defer></script>
+  <script src="assets/js/weekly-videos.js?v=2" defer></script>
   <script src="assets/js/auth.js?v=20261120b" defer></script>
 </body>
 </html>
