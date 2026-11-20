@@ -8,6 +8,8 @@
   <meta name="robots" content="index,follow">
   <meta property="og:url" content="https://ecerci555-spec.github.io/barut-gaming-freeroam/">
   <meta name="theme-color" content="#0b0b0e">
+  <meta name="color-scheme" content="dark">
+  <meta name="format-detection" content="telephone=no">
   <meta name="description" content="Barut Gaming, MTA:SA Freeroam sunucusu. Özel araçlar, drift, coin, klanlar ve 4 dil desteği. Barut Gaming sunucusuna katıl: 185.158.151.103:22003.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Barut Gaming | MTA:SA Freeroam Sunucusu – Oyna ve Katıl">
@@ -57,9 +59,12 @@
   <link rel="stylesheet" href="assets/css/style.css?v=20261120-navigation-v5">
   <link rel="stylesheet" href="assets/css/weekly-videos.css?v=2">
   <link rel="stylesheet" href="assets/css/account-v2.css?v=20261120-account-menu-v2">
+  <link rel="stylesheet" href="assets/css/pro-v6.css?v=6">
   <title>Barut Gaming | MTA:SA Freeroam Sunucusu – Oyna ve Katıl</title>
 </head>
 <body>
+  <a class="v6-skip" href="#mainContent">İçeriğe atla</a>
+  <div class="v6-scroll-progress" id="v6ScrollProgress" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
   <div class="announcement" id="announcement">
     <div class="container announcement__inner">
@@ -81,7 +86,7 @@
 </div>
       <nav class="desktop-nav" aria-label="Ana menü">
         <a href="#top" data-i18n="navHome">Ana Sayfa</a>
-        <a href="#features" data-i18n="navFeatures">Özellikler</a><a href="#galeri" class="gallery-nav-link" data-gallery-nav hidden>Galeri</a><a href="#haftanin-kareleri">Haftanın Videoları</a>
+        <a href="#features" data-i18n="navFeatures">Özellikler</a><a href="#nasil-katilirim" data-v6-i18n="navGuide">Nasıl Katılırım?</a><a href="#galeri" class="gallery-nav-link" data-gallery-nav hidden>Galeri</a><a href="#haftanin-kareleri">Haftanın Videoları</a>
         <a href="#community" data-i18n="navCommunity">Topluluk</a>
         <a href="#rules" data-i18n="navRules">Kurallar</a>
         <a href="#reports" data-i18n="navReports">Şikâyetler</a><a href="#suggestions" data-i18n="navIdeas">Script İstekleri</a><a href="#faq" data-i18n="navFaq">SSS</a>
@@ -114,7 +119,7 @@
     </nav>
   </header>
 
-  <main>
+  <main id="mainContent">
     <section class="hero" aria-labelledby="heroTitle">
       <div class="hero__lines" aria-hidden="true"></div>
       <div class="container hero__layout">
@@ -125,6 +130,11 @@
           <div class="hero__actions">
             <button class="btn btn--primary btn--large" data-action="join"><span aria-hidden="true">▶</span> <span data-i18n="startPlaying">HEMEN OYNA</span><span aria-hidden="true">↗</span></button>
             <a class="btn btn--outline btn--large" href="#features"><span data-i18n="exploreServer">SUNUCUYU KEŞFET</span><span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="v6-kpi-row" aria-label="Barut Gaming hakkında">
+            <div class="v6-kpi"><b>4</b><span data-v6-i18n="kpiLanguages">DİL DESTEĞİ</span></div>
+            <div class="v6-kpi"><b>F1–F3</b><span data-v6-i18n="kpiPanels">OYUN İÇİ PANELLER</span></div>
+            <div class="v6-kpi"><b>10</b><span data-v6-i18n="kpiGallery">GERÇEK OYUN KARESİ</span></div>
           </div>
           <div class="hero__chips" aria-label="Öne çıkan özellikler"><span><i></i> FREEROAM</span><span><i></i> CUSTOM VEHICLES</span><span><i></i> TR / EN / RU / PT-BR</span></div>
           <div class="hero__trust"><div class="dash-icons" aria-hidden="true"><span>B</span><span>G</span><span>F</span></div><p data-i18n="heroBottom">Sürüş, etkinlik ve özgürlüğün buluşma noktası.</p></div>
@@ -137,6 +147,38 @@
         </div>
       </div>
       <div class="hero__footer container"><span data-i18n="scrollExplore">KEŞFETMEK İÇİN KAYDIR</span><span class="hero__scroll" aria-hidden="true">↓</span><span>01 / 05</span></div>
+    </section>
+
+
+    <section class="v6-showcase" id="oyun-vitrini" aria-labelledby="v6ShowcaseTitle">
+      <div class="container">
+        <div class="v6-showcase__head">
+          <div><span class="v6-eyebrow" data-v6-i18n="showcaseEyebrow">OYUNUN İÇİNDEN / GERÇEK GÖRÜNTÜLER</span>
+            <h2 id="v6ShowcaseTitle" data-v6-i18n-html="showcaseTitle">EKRAN DEĞİL.<br><em>BARUT DÜNYASI.</em></h2></div>
+          <p data-v6-i18n="showcaseDesc">Bunlar stok fotoğraflar değil; sunucumuzdan çekilmiş panel, karakter ve araç görüntüleri. Daha fazlası galeride.</p>
+        </div>
+        <div class="v6-showcase__grid">
+          <a class="v6-snapshot" href="#galeri" aria-label="F1 freeroam paneli galerisini aç">
+            <img src="assets/gallery/panels/f1-panel.webp" alt="Barut Gaming sunucusundan F1 freeroam kontrol paneli ekran görüntüsü" width="440" height="560" loading="lazy" decoding="async">
+            <span class="v6-snapshot__index">01 / PANEL</span>
+            <span class="v6-snapshot__caption"><strong data-v6-i18n="shotPanel">F1 FREEROAM</strong><small data-v6-i18n="shotPanelSub">KONTROL • AYARLAR</small><span>↗</span></span>
+          </a>
+          <a class="v6-snapshot" href="#galeri" aria-label="CJ kıyafetlerinin fotoğraflarını aç">
+            <img src="assets/gallery/cj/cj-siyah-arka.webp" alt="Sırtında Barut Gaming yazan siyah CJ kombininin oyun içi görüntüsü" width="440" height="560" loading="lazy" decoding="async">
+            <span class="v6-snapshot__index">02 / STYLE</span>
+            <span class="v6-snapshot__caption"><strong data-v6-i18n="shotCharacter">CJ STİLİ</strong><small data-v6-i18n="shotCharacterSub">BARUT KOMBİNLERİ</small><span>↗</span></span>
+          </a>
+          <a class="v6-snapshot" href="#galeri" aria-label="Barut Gaming motosiklet galerisini aç">
+            <img src="assets/gallery/vehicles/barut-motor-2.webp" alt="Barut Gaming turuncu siyah motosikletin oyundaki yandan görüntüsü" width="440" height="560" loading="lazy" decoding="async">
+            <span class="v6-snapshot__index">03 / RIDE</span>
+            <span class="v6-snapshot__caption"><strong data-v6-i18n="shotBike">ÖZEL MOTOR</strong><small data-v6-i18n="shotBikeSub">OYUN İÇİ GÖRÜNTÜ</small><span>↗</span></span>
+          </a>
+        </div>
+        <div class="v6-showcase__bottom">
+          <p data-v6-i18n="showcaseDisclaimer">Galeri, Barut Gaming sunucusundan paylaşılan gerçek ekran görüntülerini içerir.</p>
+          <a href="#galeri" class="v6-outline-link" data-v6-i18n="showAllPhotos">TÜM FOTOĞRAFLARI GÖR ↗</a>
+        </div>
+      </div>
     </section>
 
     <section class="section photo-gallery" id="galeri" aria-labelledby="galleryTitle" hidden>
@@ -230,6 +272,42 @@
     </section>
 
 
+
+    <section class="v6-guide" id="nasil-katilirim" aria-labelledby="v6GuideTitle">
+      <div class="container">
+        <div class="v6-guide__heading">
+          <div><span class="v6-eyebrow" data-v6-i18n="guideEyebrow">BAĞLANTI REHBERİ / 3 ADIM</span>
+            <h2 id="v6GuideTitle" data-v6-i18n-html="guideTitle">3 ADIMDA<br><em>OYUNDASIN.</em></h2></div>
+          <p data-v6-i18n="guideIntro">Barut Gaming Freeroam'a katılmak için MTA:SA'yı bilgisayarına kur, oyunu başlat ve sunucu adresini kullan. İşte kısa rehber.</p>
+        </div>
+        <div class="v6-guide__steps">
+          <article class="v6-step">
+            <span class="v6-step__number">01</span>
+            <h3 data-v6-i18n="stepOneTitle">MTA:SA'YI İNDİR</h3>
+            <p data-v6-i18n="stepOneDesc">Bilgisayarında GTA San Andreas ve uygun bir MTA:SA istemcisi bulunmalı.</p>
+            <a class="v6-step__cta" href="https://multitheftauto.com/" target="_blank" rel="noopener noreferrer" data-v6-i18n="stepOneAction">RESMÎ MTA SİTESİ ↗</a>
+          </article>
+          <article class="v6-step">
+            <span class="v6-step__number">02</span>
+            <h3 data-v6-i18n="stepTwoTitle">SUNUCUYA BAĞLAN</h3>
+            <p data-v6-i18n="stepTwoDesc">Oyuna Katıl butonuyla MTA'yı aç veya sunucu adresini MTA'nın bağlantı alanına yapıştır.</p>
+            <button class="v6-step__cta" type="button" data-action="join" data-v6-i18n="stepTwoAction">DOĞRUDAN BAĞLAN ↗</button>
+          </article>
+          <article class="v6-step">
+            <span class="v6-step__number">03</span>
+            <h3 data-v6-i18n="stepThreeTitle">FREEROAM'U KEŞFET</h3>
+            <p data-v6-i18n="stepThreeDesc">Sunucu dosyalarının yüklenmesini tamamla; F1 panelini, marketi ve klan sistemini incele.</p>
+            <a class="v6-step__cta" href="#galeri" data-v6-i18n="stepThreeAction">PANEL FOTOĞRAFLARINA BAK ↗</a>
+          </article>
+        </div>
+        <div class="v6-guide__ip">
+          <div><span data-v6-i18n="ipLabel">SUNUCU IP / PORT</span><strong>185.158.151.103:22003</strong></div>
+          <button type="button" data-action="copy" data-v6-i18n="copyIp">ADRESİ KOPYALA</button>
+          <small data-v6-i18n="ipHint">Sunucu çevrimiçi durum bilgisi gecikmeli olabilir; güncel kontrol zamanı bağlantı bölümünde gösterilir.</small>
+        </div>
+      </div>
+    </section>
+
     <section class="seo-about" id="hakkimizda" aria-labelledby="aboutGamingTitle">
       <div class="container seo-about__inner">
         <div>
@@ -255,6 +333,22 @@
           <article class="feature-card"><span class="feature-card__num">04 / FREEROAM</span><div class="feature-card__icon" aria-hidden="true">⚡</div><h3 data-i18n="f4Title">ÖZGÜR OYUN</h3><p data-i18n="f4Desc">Kendi rotanı çiz, dilediğin gibi sür ve San Andreas'ı yeniden keşfet.</p><span class="feature-card__arrow">↗</span></article>
           <article class="feature-card"><span class="feature-card__num">05 / COMMUNITY</span><div class="feature-card__icon" aria-hidden="true">♜</div><h3 data-i18n="f5Title">KLAN & TOPLULUK</h3><p data-i18n="f5Desc">Ekibini kur, arkadaşlarınla buluş ve topluluğun bir parçası ol.</p><span class="feature-card__arrow">↗</span></article>
           <article class="feature-card"><span class="feature-card__num">06 / GLOBAL</span><div class="feature-card__icon" aria-hidden="true">◈</div><h3 data-i18n="f6Title">4 DİL DESTEĞİ</h3><p data-i18n="f6Desc">Türkçe, İngilizce, Rusça ve Brezilya Portekizcesi ile dünyaya açık topluluk.</p><span class="feature-card__arrow">↗</span></article>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="v6-hub" id="oyuncu-merkezi" aria-labelledby="v6HubTitle">
+      <div class="container">
+        <div class="v6-hub__heading"><span class="v6-eyebrow" data-v6-i18n="hubEyebrow">BARUT GAMING / TOPLULUK MERKEZİ</span>
+          <h2 id="v6HubTitle" data-v6-i18n-html="hubTitle">OYUNCULAR İÇİN<br><em>TEK MERKEZ.</em></h2>
+          <p data-v6-i18n="hubIntro">Sunucudan kareler, oyuncuların video paylaşımları, şikâyetler ve yeni script fikirleri tek adreste.</p>
+        </div>
+        <div class="v6-hub__grid">
+          <a href="#galeri" class="v6-hub-card"><span class="v6-hub-card__icon">▣</span><h3 data-v6-i18n="hubGalleryTitle">OYUN GALERİSİ</h3><p data-v6-i18n="hubGalleryDesc">F1, F2, F3 panelleri, CJ kıyafetleri ve araç görüntüleri.</p><span class="v6-hub-card__arrow" data-v6-i18n="hubBrowse">İNCELE ↗</span></a>
+          <a href="#video-gonder" class="v6-hub-card"><span class="v6-hub-card__icon">▶</span><h3 data-v6-i18n="hubVideoTitle">VİDEO GÖNDER</h3><p data-v6-i18n="hubVideoDesc">Oyun videonu gönder; onaylanan kayıtlar haftanın vitrinine girsin.</p><span class="v6-hub-card__arrow" data-v6-i18n="hubSend">GÖNDER ↗</span></a>
+          <a href="#reports" class="v6-hub-card"><span class="v6-hub-card__icon">⚑</span><h3 data-v6-i18n="hubReportTitle">OYUNCU DESTEĞİ</h3><p data-v6-i18n="hubReportDesc">Şikâyet bildir, fotoğraf veya video kanıtı ekle.</p><span class="v6-hub-card__arrow" data-v6-i18n="hubReport">BİLDİR ↗</span></a>
+          <a href="#suggestions" class="v6-hub-card"><span class="v6-hub-card__icon">✦</span><h3 data-v6-i18n="hubIdeasTitle">SCRIPT FİKİRLERİ</h3><p data-v6-i18n="hubIdeasDesc">İstediğin sistemi öner ve diğer fikirleri beğen.</p><span class="v6-hub-card__arrow" data-v6-i18n="hubSuggest">ÖNER ↗</span></a>
         </div>
       </div>
     </section>
@@ -336,10 +430,22 @@
 
     <section class="section faq" id="faq" aria-labelledby="faqTitle"><div class="container faq__grid"><div><span class="kicker"><b>05</b> / <span data-i18n="faqKicker">YARDIM MERKEZİ</span></span><h2 id="faqTitle" data-i18n="faqTitle">MERAK <em>ETTİKLERİN.</em></h2><p class="faq__desc" data-i18n="faqDesc">Bağlantı, kurulum ve topluluk hakkında en çok sorulan sorular.</p><button class="btn btn--outline" data-action="discord" data-i18n="getHelp">TOPLULUKTAN DESTEK AL ↗</button></div><div id="faqList" class="faq__list"></div></div></section>
 
+
+    <section class="v6-trust" aria-labelledby="v6TrustTitle">
+      <div class="container v6-trust__inner">
+        <div><span class="v6-eyebrow" data-v6-i18n="trustEyebrow">ŞEFFAFLIK / OYUNCU GÜVENLİĞİ</span>
+          <h2 id="v6TrustTitle" data-v6-i18n-html="trustTitle">OYUNDA ÖZGÜR.<br><em>BİLGİDE AÇIK.</em></h2>
+          <div class="v6-trust__links"><a href="gizlilik.html" data-v6-i18n="privacyLink">Gizlilik Bilgileri ↗</a>
+            <a href="kullanim-kosullari.html" data-v6-i18n="termsLink">Kullanım Koşulları ↗</a></div>
+        </div>
+        <p data-v6-i18n-html="trustDesc">Barut Gaming tanıtım sitesi ücretsiz GitHub Pages üzerinde yayınlanır. <strong>Şifrelerini sitedeki formlara yazma.</strong> Şikâyetler, script önerileri ve video başvuruları GitHub üzerinden gönderilir ve başvuru içerikleri orada herkese açık olabilir. Web hesabı için ayrı bir oturum doğrulama altyapısı henüz kurulmamıştır.</p>
+      </div>
+    </section>
+
     <section class="final-cta"><div class="container final-cta__inner"><div><span class="kicker">BARUT GAMING / FREEROAM</span><h2 data-i18n="ctaTitle">YERİN HAZIR.<br><em>GAZA BAS.</em></h2><p data-i18n="ctaDesc">San Andreas seni bekliyor. Barut Gaming Freeroam'a katıl.</p></div><button class="btn btn--dark btn--large" data-action="join"><span data-i18n="playNow">OYUNA KATIL</span> ↗</button></div></section>
   </main>
 
-  <footer class="footer"><div class="container footer__top"><a class="brand" href="#top"><span class="brand__mark" aria-hidden="true">B</span><span class="brand__name">BARUT <b>GAMING</b><small>FREEROAM / MTA:SA</small></span></a><div class="footer__links"><a href="#features" data-i18n="navFeatures">Özellikler</a><a href="#galeri" class="gallery-nav-link" data-gallery-nav hidden>Galeri</a><a href="#haftanin-kareleri">Haftanın Videoları</a><a href="#rules" data-i18n="navRules">Kurallar</a><a href="#suggestions" data-i18n="navIdeas">Script İstekleri</a><a href="#faq" data-i18n="navFaq">SSS</a><button data-action="discord">DISCORD ↗</button></div></div><div class="container footer__bottom"><span>© <span id="year">2026</span> BARUT GAMING. <span data-i18n="rights">Tüm hakları saklıdır.</span></span><span data-i18n="unofficial">Bağımsız MTA:SA topluluk sitesi.</span> <a href="https://whos.amung.us/legal/privacy/" target="_blank" rel="noopener noreferrer" style="font-size:10px;color:#888">Ziyaretçi sayacı bilgisi</a> <a href="https://unsplash.com/photos/9pgQF-z5V9g" target="_blank" rel="noopener noreferrer" style="font-size:10px;color:#888">Fotoğraf: Wes Tindel / Unsplash</a></div></footer>
+  <footer class="footer"><div class="container footer__top"><a class="brand" href="#top"><span class="brand__mark" aria-hidden="true">B</span><span class="brand__name">BARUT <b>GAMING</b><small>FREEROAM / MTA:SA</small></span></a><div class="footer__links"><a href="#features" data-i18n="navFeatures">Özellikler</a><a href="#galeri" class="gallery-nav-link" data-gallery-nav hidden>Galeri</a><a href="#haftanin-kareleri">Haftanın Videoları</a><a href="#rules" data-i18n="navRules">Kurallar</a><a href="#suggestions" data-i18n="navIdeas">Script İstekleri</a><a href="#faq" data-i18n="navFaq">SSS</a><button data-action="discord">DISCORD ↗</button></div></div><div class="container footer__bottom"><span>© <span id="year">2026</span> BARUT GAMING. <span data-i18n="rights">Tüm hakları saklıdır.</span></span><span data-i18n="unofficial">Bağımsız MTA:SA topluluk sitesi.</span> <a href="https://whos.amung.us/legal/privacy/" target="_blank" rel="noopener noreferrer" style="font-size:10px;color:#888">Ziyaretçi sayacı bilgisi</a> <a href="https://unsplash.com/photos/9pgQF-z5V9g" target="_blank" rel="noopener noreferrer" style="font-size:10px;color:#888">Fotoğraf: Wes Tindel / Unsplash</a></div><div class="container v6-footer-links"><a href="#nasil-katilirim" data-v6-i18n="navGuide">Nasıl Katılırım?</a><a href="gizlilik.html" data-v6-i18n="privacyLink">Gizlilik Bilgileri ↗</a><a href="kullanim-kosullari.html" data-v6-i18n="termsLink">Kullanım Koşulları ↗</a><a href="https://multitheftauto.com/" target="_blank" rel="noopener noreferrer" data-v6-i18n="mtaOfficial">MTA:SA Resmî Sitesi ↗</a></div></footer>
 
     <dialog id="accountDialog" class="account-dialog" aria-labelledby="accountDialogTitle" aria-describedby="accountDialogDescription">
     <button type="button" class="account-dialog__close" data-account-close aria-label="Kapat">×</button>
@@ -363,5 +469,6 @@
   <script src="assets/js/gallery.js" defer></script>
   <script src="assets/js/weekly-videos.js?v=2" defer></script>
   <script src="assets/js/auth.js?v=20261120-account-menu-v2" defer></script>
+  <script src="assets/js/pro-v6.js?v=6" defer></script>
 </body>
 </html>
