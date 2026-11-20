@@ -34,11 +34,17 @@ function updateStatus(data){
   const valid=state==="online"&&Number.isInteger(data.players)&&Number.isInteger(data.maxPlayers);
   $("#playersWrap").hidden=!valid;
   if(valid)$("#playerCount").textContent=data.players+" / "+data.maxPlayers;
-  const str=valid?data.players+" / "+data.maxPlayers:state==="offline"?"0 / —":"— / —";
+  const str=valid?(data.countApproximate?"~":"")+data.players+" / "+data.maxPlayers:state==="offline"?"0 / —":"— / —";
   $("#navOnlineCount").textContent=str;
-  $("#mobileOnlineCount").textContent=valid?data.players+" oyuncu":state==="offline"?"Çevrimdışı":"Oyuncu bilgisi bekleniyor";
+  $("#mobileOnlineCount").textContent=valid?(data.countApproximate?"~":"")+data.players+" oyuncu":state==="offline"?"Çevrimdışı":"Oyuncu bilgisi bekleniyor";
   const roster=$("#rosterList");roster.replaceChildren();
-  $("#rosterCount").textContent=valid?data.players+" / "+data.maxPlayers+" ONLINE":"OYUNCU BİLGİSİ BEKLENİYOR";
+  $("#rosterCount").textContent=valid?(data.countApproximate?"~":"")+data.players+" / "+data.maxPlayers+" ONLINE":"OYUNCU BİLGİSİ BEKLENİYOR";
+  const updateEl=$("#statusLastChecked");
+  if(updateEl){
+    const date=Number.isFinite(data.checkedAt)?new Date(data.checkedAt):null;
+    const time=date&&!Number.isNaN(date.getTime())?date.toLocaleTimeString("tr-TR",{timeZone:"Europe/Istanbul",hour:"2-digit",minute:"2-digit"}):"—";
+    updateEl.textContent=(data.countApproximate?"⚠ Gecikmeli MTA ana listesi verisi":"● Doğrudan MTA sorgusu")+" • Son kontrol: "+time+" (TR) • Yaklaşık 5 dk aralıklarla yenilenir.";
+  }
   if(!valid){roster.append(Object.assign(document.createElement("span"),{textContent:"Canlı oyuncu bilgisi şu an alınamıyor."}));return}
   if(!data.playerNamesAvailable){
     roster.append(Object.assign(document.createElement("span"),{textContent:"Oyuncu isimlerini görüntülemek için barut_website_bridge MTA kaynağının sunucuya yüklenmesi gerekiyor. Oyuncu sayısı yine de canlı olarak güncellenir."}));
@@ -63,9 +69,10 @@ async function loadStatus(){
     if(!Number.isFinite(ts)||Math.abs(Date.now()-ts)>35*60000)throw Error("stale");
     const names=Array.isArray(data.playerNames)?data.playerNames.filter(x=>typeof x==="string"&&x.length>0&&x.length<=64).slice(0,100):[];
     const okNames=data.playerNamesAvailable===true&&Array.isArray(data.playerNames);
+    const info={players:data.players,maxPlayers:data.maxPlayers,playerNames:names,playerNamesAvailable:okNames,countApproximate:data.countApproximate===true,checkedAt:ts};
     if(data.online===true&&Number.isInteger(data.players)&&Number.isInteger(data.maxPlayers))
-      updateStatus({state:"online",players:data.players,maxPlayers:data.maxPlayers,playerNames:names,playerNamesAvailable:okNames});
-    else if(data.online===false)updateStatus({state:"offline"});
+      updateStatus({state:"online",...info});
+    else if(data.online===false)updateStatus({state:"offline",...info});
     else updateStatus({state:"unknown"});
   }catch{updateStatus({state:"error"})}
 }
