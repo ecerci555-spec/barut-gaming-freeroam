@@ -1,0 +1,62 @@
+name: "💡 Script / Sistem Önerisi"
+description: "Yeni script fikrini paylaş; topluluk GitHub üzerinden 👍 beğensin."
+title: "[Script İsteği] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Barut Gaming • Script Önerisi
+        Öneriler herkese açıktır. Aynı fikir daha önce paylaşılmışsa ilgili öneriye 👍 bırakabilirsiniz.
+  - type: input
+    id: nickname
+    attributes:
+      label: "Oyun içi kullanıcı adın"
+      placeholder: "BarutPlayer"
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: "Script kategorisi"
+      options:
+        - "Araç ve Tuning"
+        - "Drift / Yarış"
+        - "Freeroam"
+        - "F1 / F2 / F4 / F5 Panelleri"
+        - "TCT / Ev / Arsa"
+        - "HUD / Grafik / Shader"
+        - "Klan / Etkinlik"
+        - "Ekonomi / Coin"
+        - "Diğer"
+    validations:
+      required: true
+  - type: input
+    id: subject
+    attributes:
+      label: "Script adı"
+      placeholder: "Örn. Gelişmiş Tuning Sistemi"
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: "İstediğin özellikler"
+      description: "Ne işe yarayacak, nasıl kullanılacak, hangi tuş/panel üzerinden açılacak?"
+      placeholder: "İsteğinin ayrıntılarını yaz..."
+    validations:
+      required: true
+  - type: textarea
+    id: benefit
+    attributes:
+      label: "Oyunculara faydası"
+      placeholder: "Bu sistem sunucuyu nasıl güzelleştirecek?"
+    validations:
+      required: false
+  - type: upload
+    id: example
+    attributes:
+      label: "Örnek ekran görüntüsü / video (isteğe bağlı)"
+      description: "Görsel, örnek tasarım veya video ekleyebilirsin."
+    validations:
+      required: false
+      accept: ".png,.jpg,.jpeg,.webp,.gif,.mp4,.mov,.webm"
