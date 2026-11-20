@@ -152,7 +152,7 @@ form.addEventListener("submit",event=>{
  event.preventDefault();
  if(!form.reportValidity())return;
  const nick=document.getElementById("weeklyNick").value.trim();
- const title=document.getElementById("weeklyTitle").value.trim();
+ const title=document.getElementById("weeklyTitleInput").value.trim();
  const details=document.getElementById("weeklyDescription").value.trim();
  const youtube=document.getElementById("weeklyYoutube").value.trim();
  if(youtube&&!validVideoId(getYoutubeId(youtube))){
