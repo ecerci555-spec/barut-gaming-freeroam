@@ -79,7 +79,7 @@
 </div>
       <nav class="desktop-nav" aria-label="Ana menü">
         <a href="#top" data-i18n="navHome">Ana Sayfa</a>
-        <a href="#features" data-i18n="navFeatures">Özellikler</a>
+        <a href="#features" data-i18n="navFeatures">Özellikler</a><a href="#galeri" class="gallery-nav-link" data-gallery-nav hidden>Galeri</a>
         <a href="#community" data-i18n="navCommunity">Topluluk</a>
         <a href="#rules" data-i18n="navRules">Kurallar</a>
         <a href="#reports" data-i18n="navReports">Şikâyetler</a><a href="#suggestions" data-i18n="navIdeas">Script İstekleri</a><a href="#faq" data-i18n="navFaq">SSS</a>
@@ -97,7 +97,7 @@
       </div>
     </div>
     <nav class="mobile-nav" id="mobileNav" aria-label="Mobil menü" hidden>
-      <a href="#top" data-i18n="navHome">Ana Sayfa</a><a href="#features" data-i18n="navFeatures">Özellikler</a><a href="#community" data-i18n="navCommunity">Topluluk</a><a href="#reports" data-i18n="navReports">Şikâyetler</a><a href="#suggestions" data-i18n="navIdeas">Script İstekleri</a><a href="#rules" data-i18n="navRules">Kurallar</a><a href="#faq" data-i18n="navFaq">SSS</a>
+      <a href="#top" data-i18n="navHome">Ana Sayfa</a><a href="#features" data-i18n="navFeatures">Özellikler</a><a href="#galeri" class="gallery-nav-link" data-gallery-nav hidden>Galeri</a><a href="#community" data-i18n="navCommunity">Topluluk</a><a href="#reports" data-i18n="navReports">Şikâyetler</a><a href="#suggestions" data-i18n="navIdeas">Script İstekleri</a><a href="#rules" data-i18n="navRules">Kurallar</a><a href="#faq" data-i18n="navFaq">SSS</a>
       <button class="btn btn--primary" data-action="join" data-i18n="playNow">OYUNA KATIL</button><a href="#online-players">🟢 <span id="mobileOnlineCount">— oyuncu</span></a>
     </nav>
   </header>
@@ -187,6 +187,29 @@
     <section class="section news" id="news" aria-labelledby="newsTitle"><div class="container"><div class="section-heading"><div><span class="kicker"><b>03</b> / <span data-i18n="newsKicker">HABER MERKEZİ</span></span><h2 id="newsTitle" data-i18n="newsTitle">SON <em>DUYURULAR.</em></h2></div><p data-i18n="newsDesc">Güncellemeler ve etkinlik duyuruları bu alanda yayınlanır.</p></div><div id="newsGrid" class="news-grid" aria-live="polite"></div><p class="news__note" data-i18n="newsNote">Duyurular yönetici tarafından site ayarlarından düzenlenebilir.</p></div></section>
 
 
+
+    <section class="section photo-gallery" id="galeri" aria-labelledby="galleryTitle" hidden>
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="kicker"><b>BARUT GAMING</b> / OYUN İÇİ GALERİ</span><h2 id="galleryTitle">OYUNUMUZDAN <em>KARELER.</em></h2></div>
+          <p>F1–F2–F3 panellerini, CJ kombinlerini ve sunucudaki motosikletleri kendi oyun görüntülerimizle keşfet.</p>
+        </div>
+        <div class="gallery-filters" id="galleryFilters" role="group" aria-label="Galeri filtresi">
+          <button type="button" data-gallery-filter="all" class="gallery-filter active" aria-pressed="true">Tüm Fotoğraflar <span>10</span></button>
+          <button type="button" data-gallery-filter="panels" class="gallery-filter" aria-pressed="false">F1 / F2 / F3 Panelleri <span>3</span></button>
+          <button type="button" data-gallery-filter="cj" class="gallery-filter" aria-pressed="false">CJ Kombinleri <span>4</span></button>
+          <button type="button" data-gallery-filter="vehicles" class="gallery-filter" aria-pressed="false">Araçlar <span>3</span></button>
+        </div>
+        <div class="gallery-grid" id="galleryGrid" aria-live="polite"></div>
+        <p class="gallery-caption">Fotoğraflar Barut Gaming MTA:SA sunucusundan alınmıştır. Görsellere tıklayarak büyütebilirsin.</p>
+      </div>
+    </section>
+    <dialog class="gallery-lightbox" id="galleryLightbox" aria-label="Oyun içi fotoğraf ön izlemesi">
+      <button class="gallery-lightbox__close" type="button" data-gallery-close aria-label="Kapat">×</button>
+      <img id="galleryLightboxImg" alt="" decoding="async">
+      <div class="gallery-lightbox__meta"><span id="galleryLightboxCategory">BARUT GAMING</span><h3 id="galleryLightboxTitle"></h3></div>
+    </dialog>
+
     <section class="section feedback-section reports" id="reports" aria-labelledby="reportsTitle">
       <div class="container feedback-layout">
         <div class="feedback-copy"><span class="kicker"><b>04</b> / BARUT DESTEK</span>
@@ -252,11 +275,12 @@
     <section class="final-cta"><div class="container final-cta__inner"><div><span class="kicker">BARUT GAMING / FREEROAM</span><h2 data-i18n="ctaTitle">YERİN HAZIR.<br><em>GAZA BAS.</em></h2><p data-i18n="ctaDesc">San Andreas seni bekliyor. Barut Gaming Freeroam'a katıl.</p></div><button class="btn btn--dark btn--large" data-action="join"><span data-i18n="playNow">OYUNA KATIL</span> ↗</button></div></section>
   </main>
 
-  <footer class="footer"><div class="container footer__top"><a class="brand" href="#top"><span class="brand__mark" aria-hidden="true">B</span><span class="brand__name">BARUT <b>GAMING</b><small>FREEROAM / MTA:SA</small></span></a><div class="footer__links"><a href="#features" data-i18n="navFeatures">Özellikler</a><a href="#rules" data-i18n="navRules">Kurallar</a><a href="#suggestions" data-i18n="navIdeas">Script İstekleri</a><a href="#faq" data-i18n="navFaq">SSS</a><button data-action="discord">DISCORD ↗</button></div></div><div class="container footer__bottom"><span>© <span id="year">2026</span> BARUT GAMING. <span data-i18n="rights">Tüm hakları saklıdır.</span></span><span data-i18n="unofficial">Bağımsız MTA:SA topluluk sitesi.</span> <a href="https://whos.amung.us/legal/privacy/" target="_blank" rel="noopener noreferrer" style="font-size:10px;color:#888">Ziyaretçi sayacı bilgisi</a> <a href="https://unsplash.com/photos/9pgQF-z5V9g" target="_blank" rel="noopener noreferrer" style="font-size:10px;color:#888">Fotoğraf: Wes Tindel / Unsplash</a></div></footer>
+  <footer class="footer"><div class="container footer__top"><a class="brand" href="#top"><span class="brand__mark" aria-hidden="true">B</span><span class="brand__name">BARUT <b>GAMING</b><small>FREEROAM / MTA:SA</small></span></a><div class="footer__links"><a href="#features" data-i18n="navFeatures">Özellikler</a><a href="#galeri" class="gallery-nav-link" data-gallery-nav hidden>Galeri</a><a href="#rules" data-i18n="navRules">Kurallar</a><a href="#suggestions" data-i18n="navIdeas">Script İstekleri</a><a href="#faq" data-i18n="navFaq">SSS</a><button data-action="discord">DISCORD ↗</button></div></div><div class="container footer__bottom"><span>© <span id="year">2026</span> BARUT GAMING. <span data-i18n="rights">Tüm hakları saklıdır.</span></span><span data-i18n="unofficial">Bağımsız MTA:SA topluluk sitesi.</span> <a href="https://whos.amung.us/legal/privacy/" target="_blank" rel="noopener noreferrer" style="font-size:10px;color:#888">Ziyaretçi sayacı bilgisi</a> <a href="https://unsplash.com/photos/9pgQF-z5V9g" target="_blank" rel="noopener noreferrer" style="font-size:10px;color:#888">Fotoğraf: Wes Tindel / Unsplash</a></div></footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
   <button class="to-top" id="backTop" aria-label="Yukarı çık">↑</button>
   <script src="config.js"></script>
   <script src="assets/js/app.js"></script>
+  <script src="assets/js/gallery.js" defer></script>
 </body>
 </html>
