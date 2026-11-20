@@ -24,8 +24,33 @@ function toast(msg){const el=$('#toast');el.textContent=msg;el.classList.add('sh
 function address(){const host=String(cfg.serverHost||'').trim(),port=Number(cfg.serverPort||22003);return /^[a-zA-Z0-9.-]+$/.test(host)&&port>=1&&port<=65535?host+':'+port:''}
 function news(){const grid=$('#newsGrid');grid.replaceChildren();for(const item of (cfg.news||[]).slice(0,6)){const el=document.createElement('article');el.className='news-card';const meta=document.createElement('div');meta.className='news-card__meta';const tag=document.createElement('span'),date=document.createElement('time');tag.textContent=item.tag||'BARUT';date.textContent=item.date||'BARUT / NEWS';meta.append(tag,date);const h=document.createElement('h3'),p=document.createElement('p');h.textContent=item.title?.[lang]||item.title?.tr||'';p.textContent=item.description?.[lang]||item.description?.tr||'';el.append(meta,h,p);if(/^https:\/\//.test(item.url||'')){const a=document.createElement('a');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=tr('readMore');el.append(a)}grid.append(el)}}
 function draw(){document.documentElement.lang=lang==='pt'?'pt-BR':lang;$('#language').value=lang;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(!trans[lang][k])return;if(['featuresTitle','communityTitle','newsTitle','rulesTitle','faqTitle','ctaTitle'].includes(k))el.innerHTML=tr(k);else el.textContent=tr(k)});$('#serverAddress').textContent=address()||tr('notConfigured');if(!window.barutStatus){$('#serverStatus').textContent=tr('statusUnknown');$('#miniStatus').textContent=tr('statusUnknown')}else updateStatus(window.barutStatus);const rl=$('#rulesList');rl.replaceChildren();for(const [a,b] of rules[lang]){const li=document.createElement('li'),dv=document.createElement('div'),h=document.createElement('h3'),p=document.createElement('p');h.textContent=a;p.textContent=b;dv.append(h,p);li.append(dv);rl.append(li)}const fl=$('#faqList');fl.replaceChildren();for(const [a,b] of faqs[lang]){const d=document.createElement('details'),s=document.createElement('summary'),p=document.createElement('p');s.textContent=a;p.textContent=b;d.append(s,p);fl.append(d)}news()}
-function updateStatus(data){window.barutStatus=data;const state=data.state||'unknown';const label=state==='online'?'statusOnline':state==='offline'?'statusOffline':state==='error'?'statusError':'statusUnknown';$('#serverStatus').textContent=$('#miniStatus').textContent=tr(label);$('#statusPip').className='status-pip '+(state==='online'?'online':state==='offline'?'offline':'');const show=state==='online'&&Number.isInteger(data.players)&&Number.isInteger(data.maxPlayers);$('#playersWrap').hidden=!show;if(show)$('#playerCount').textContent=data.players+' / '+data.maxPlayers}
 
+function updateStatus(data){
+  window.barutStatus=data;
+  const state=data.state||"unknown";
+  const label=state==="online"?"statusOnline":state==="offline"?"statusOffline":state==="error"?"statusError":"statusUnknown";
+  $("#serverStatus").textContent=$("#miniStatus").textContent=tr(label);
+  $("#statusPip").className="status-pip "+(state==="online"?"online":state==="offline"?"offline":"");
+  const valid=state==="online"&&Number.isInteger(data.players)&&Number.isInteger(data.maxPlayers);
+  $("#playersWrap").hidden=!valid;
+  if(valid)$("#playerCount").textContent=data.players+" / "+data.maxPlayers;
+  const str=valid?data.players+" / "+data.maxPlayers:state==="offline"?"0 / —":"— / —";
+  $("#navOnlineCount").textContent=str;
+  $("#mobileOnlineCount").textContent=valid?data.players+" oyuncu":state==="offline"?"Çevrimdışı":"Oyuncu bilgisi bekleniyor";
+  const roster=$("#rosterList");roster.replaceChildren();
+  $("#rosterCount").textContent=valid?data.players+" / "+data.maxPlayers+" ONLINE":"OYUNCU BİLGİSİ BEKLENİYOR";
+  if(!valid){roster.append(Object.assign(document.createElement("span"),{textContent:"Canlı oyuncu bilgisi şu an alınamıyor."}));return}
+  if(!data.playerNamesAvailable){
+    roster.append(Object.assign(document.createElement("span"),{textContent:"Oyuncu isimlerini görüntülemek için barut_website_bridge MTA kaynağının sunucuya yüklenmesi gerekiyor. Oyuncu sayısı yine de canlı olarak güncellenir."}));
+    return;
+  }
+  if(!data.playerNames.length){roster.append(Object.assign(document.createElement("span"),{textContent:"İsim listesi şu anda boş."}));return}
+  for(const name of data.playerNames){
+    const item=document.createElement("div");item.className="player-roster__player";
+    const avatar=document.createElement("span");avatar.className="player-roster__avatar";avatar.textContent="●";
+    const text=document.createElement("span");text.textContent=name;item.append(avatar,text);roster.append(item);
+  }
+}
 async function loadStatus(){
   if(!cfg.statusApiUrl)return;
   try{
@@ -36,25 +61,33 @@ async function loadStatus(){
     const data=await res.json();
     const ts=Date.parse(data.checkedAt||"");
     if(!Number.isFinite(ts)||Math.abs(Date.now()-ts)>35*60000)throw Error("stale");
+    const names=Array.isArray(data.playerNames)?data.playerNames.filter(x=>typeof x==="string"&&x.length>0&&x.length<=64).slice(0,100):[];
+    const okNames=data.playerNamesAvailable===true&&Array.isArray(data.playerNames);
     if(data.online===true&&Number.isInteger(data.players)&&Number.isInteger(data.maxPlayers))
-      updateStatus({state:"online",players:data.players,maxPlayers:data.maxPlayers});
+      updateStatus({state:"online",players:data.players,maxPlayers:data.maxPlayers,playerNames:names,playerNamesAvailable:okNames});
     else if(data.online===false)updateStatus({state:"offline"});
     else updateStatus({state:"unknown"});
   }catch{updateStatus({state:"error"})}
 }
 const ISSUES_BASE="https://github.com/ecerci555-spec/barut-gaming-freeroam/issues";
 const ISSUES_API="https://api.github.com/repos/ecerci555-spec/barut-gaming-freeroam/issues?state=all&per_page=80";
+
 function submitFeedback(e){
   e.preventDefault();
   const form=e.currentTarget;if(!form.reportValidity())return;
-  const kind=form.dataset.kind,fd=new FormData(form);
-  const subject=String(fd.get("subject")||"").trim(),details=String(fd.get("details")||"").trim();
-  const nickname=String(fd.get("nickname")||"").trim();
+  const data=new FormData(form);
+  const txt=key=>String(data.get(key)||"").trim();
+  const subject=txt("subject"),details=txt("details");
   if(subject.length<3||details.length<10){toast(lang==="tr"?"Lütfen daha ayrıntılı açıkla.":"Please add more details.");return}
-  const title=(kind==="report"?"[Şikayet] ":"[Script İsteği] ")+subject;
-  const body=(nickname?"**Oyuncu adı:** "+nickname+"\n\n":"")+"**Açıklama:**\n\n"+details+"\n\n---\nBarut Gaming Freeroam web sitesi üzerinden hazırlanmıştır.";
-  const target=ISSUES_BASE+"/new?title="+encodeURIComponent(title)+"&body="+encodeURIComponent(body);
-  window.location.assign(target);
+  const report=form.dataset.kind==="report";
+  const params=new URLSearchParams();
+  params.set("template",report?"sikayet.yml":"script-onerisi.yml");
+  params.set("title",(report?"[Şikayet] ":"[Script İsteği] ")+subject);
+  for(const key of report?["nickname","accused","category","date","location","details"]:["nickname","category","subject","details","benefit"]){
+    if(txt(key))params.set(key,txt(key));
+  }
+  // Native GitHub Issue Form accepts screenshots/videos in its upload field. A static Pages site cannot upload files to GitHub anonymously.
+  window.location.assign(ISSUES_BASE+"/new?"+params.toString());
 }
 async function loadSuggestions(){
   const el=$("#ideasList");if(!el)return;
