@@ -73,3 +73,14 @@
 @media(max-width:850px){.desktop-join{font-size:10px;padding:10px 11px}.admin-entry{min-height:40px}.brand__name{font-size:19px}}
 @media(max-width:760px){.site-live-visitors__label{font-size:8px}.site-live-visitors{min-width:0;max-width:142px}.site-live-visitors__widget{min-width:80px}.nav{gap:7px}.brand__mark{width:34px;height:34px}.brand__name{font-size:19px}.brand__name small{font-size:7px}.lang-select{padding:7px}.online-mini{display:none}.nav__right{margin-left:auto}}
 @media(max-width:430px){.site-live-visitors{max-width:104px;display:block;padding:5px 8px}.site-live-visitors__label{display:block;font-size:7px;margin-bottom:2px}.brand__name{font-size:17px}.brand__mark{width:30px;height:30px}.nav{gap:4px}}
+
+/* Search-friendly, useful brand introduction */
+.seo-about{padding:67px 0;border-top:1px solid #3a3028;border-bottom:1px solid #3a3028;background:linear-gradient(135deg,#17110b 0,#111315 65%)}
+.seo-about__inner{display:grid;grid-template-columns:.95fr 1.05fr;align-items:start;gap:6vw}
+.seo-about h2{font-size:clamp(38px,4.7vw,64px);margin:14px 0 12px;line-height:1.07}
+.seo-about h2 em{font-style:normal;color:var(--orange)}
+.seo-about p{font-size:13px;color:#bfc0c5;line-height:1.85;margin:0 0 15px}
+.seo-about p strong{color:#f0efec}
+.seo-about code{color:#ffad68;font-size:12px;overflow-wrap:anywhere}
+.seo-about__link{display:inline-block;color:#ffad68;border-bottom:1px solid #ff7817;font-size:11px;font-weight:900;letter-spacing:.07em;padding:11px 0;margin-top:5px}
+@media(max-width:760px){.seo-about{padding:55px 0}.seo-about__inner{grid-template-columns:1fr;gap:15px}.seo-about p{font-size:12px}.seo-about h2{font-size:40px}}
