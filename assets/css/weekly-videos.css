@@ -54,3 +54,10 @@
   .site-header .nav{grid-template-rows:minmax(76px,auto) minmax(51px,auto) !important}
   .site-header .desktop-nav a[href="#haftanin-kareleri"]{color:#ffab70 !important}
 }
+
+/* Highlight explicit MP4 attachment workflow */
+.weekly-video-upload-hint{padding:15px 17px;margin:5px 0 2px;border:1px dashed #ff852f;border-radius:8px;background:linear-gradient(110deg,#3d210f,#151518 80%);}
+.weekly-video-upload-hint strong{color:#ffa55b;font-size:12px;font-weight:900;letter-spacing:.08em;}
+.weekly-video-upload-hint p{margin:8px 0!important;color:#e4d6c9!important;font-size:11px!important;line-height:1.6!important;}
+.weekly-video-upload-hint p b{color:white;}
+.weekly-video-upload-hint small{font-size:10px;line-height:1.55;color:#bba696;}
