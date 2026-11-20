@@ -4,7 +4,9 @@
   "online": true,
   "players": 1,
   "maxPlayers": 100,
+  "playerNames": [],
+  "playerNamesAvailable": false,
   "serverName": "BARUT GAMING  | INTERNATIONAL FREEROAM | DRIFT/PVP | TR/EN/RU/BR",
   "source": "MTA master server list (https://mtasa.com/api/)",
-  "checkedAt": "2026-11-20T10:48:22+00:00"
+  "checkedAt": "2026-11-20T11:04:23+00:00"
 }
