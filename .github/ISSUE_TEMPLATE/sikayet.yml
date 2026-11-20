@@ -1,0 +1,77 @@
+name: "🚨 Oyuncu Şikâyeti / Player Report"
+description: "Barut Gaming Freeroam: olay bildir, fotoğraf veya video kanıtı yükle."
+title: "[Şikayet] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Barut Gaming • Şikâyet Formu
+        Bu form **herkese açık GitHub deposunda** yayınlanır. Gerçek isim, telefon, adres, hesap şifresi, kimlik bilgisi ve özel konuşmalar gibi hassas verileri paylaşmayın.
+        Görselleri (.png/.jpg) ve videoları (.mp4/.mov/.webm) en alttaki kanıt bölümünden yükleyebilirsiniz. GitHub hesabıyla giriş yapmanız gerekir.
+  - type: input
+    id: nickname
+    attributes:
+      label: "Şikâyeti oluşturan oyuncu"
+      description: "Oyun içi nickiniz. Gerçek adınızı yazmayın."
+      placeholder: "Örn. BarutPlayer"
+    validations:
+      required: true
+  - type: input
+    id: accused
+    attributes:
+      label: "Şikâyet edilen oyuncu"
+      placeholder: "Oyuncunun oyun içi adı"
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: "Şikâyet kategorisi"
+      options:
+        - "Troll / Rahatsız etme"
+        - "Hile / Exploit"
+        - "Hakaret / Taciz"
+        - "Reklam / Spam"
+        - "Admin / Yetkili şikâyeti"
+        - "TCT / Obje troll"
+        - "Diğer"
+    validations:
+      required: true
+  - type: input
+    id: date
+    attributes:
+      label: "Olay tarihi ve saati"
+      description: "Mümkünse Türkiye saatiyle belirtin."
+      placeholder: "2026-11-20 14:30"
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: "Olayın geçtiği yer"
+      placeholder: "Örn. Los Santos / TCT bölgesi"
+    validations:
+      required: false
+  - type: textarea
+    id: details
+    attributes:
+      label: "Şikâyet açıklaması"
+      description: "Ne oldu? Olayı sırasıyla ve açık biçimde yazın."
+      placeholder: "Olayın ayrıntılarını yaz..."
+    validations:
+      required: true
+  - type: upload
+    id: evidence
+    attributes:
+      label: "📸 Fotoğraf / 🎬 Video kanıtları"
+      description: "İstersen ekran görüntüsü veya oyun kaydı yükle. İzin verilenler: png, jpg, jpeg, webp, gif, mp4, mov, webm. Dosya boyutu GitHub hesap sınırlarına tabidir."
+    validations:
+      required: false
+      accept: ".png,.jpg,.jpeg,.webp,.gif,.mp4,.mov,.webm"
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: "Onay"
+      options:
+        - label: "Verdiğim bilgilerin doğru olduğunu ve gönderimin herkese açık olacağını biliyorum."
+          required: true
