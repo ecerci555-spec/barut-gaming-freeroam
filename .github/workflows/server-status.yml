@@ -7,6 +7,8 @@ on:
     paths:
       - ".github/workflows/server-status.yml"
       - "scripts/update_status.py"
+      - "assets/js/pro-v6.js"
+      - "assets/js/auth.js"
 permissions:
   contents: write
 jobs:
@@ -27,7 +29,10 @@ jobs:
       - name: Validate JavaScript syntax
         run: |
           node --check assets/js/app.js
-          node --check assets/js/admin.js
+          node --check assets/js/gallery.js
+          node --check assets/js/auth.js
+          node --check assets/js/pro-v6.js
+          node --check assets/js/weekly-videos.js
           python -m py_compile scripts/update_status.py
       - name: Publish status data
         run: |
