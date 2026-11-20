@@ -1,6 +1,7 @@
 name: "🎥 Haftanın Barut Gaming Videosunu Gönder"
 description: "Sunucuda çektiğin videoyu gönder; onaylanırsa Bu Haftaki Barut Gaming'den Kareler bölümünde yayınlanır."
 title: "[Haftanın Videosu] "
+labels: ["video-basvuru"]
 body:
   - type: markdown
     attributes:
