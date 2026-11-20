@@ -1,0 +1,37 @@
+name: Barut Gaming - Oyuncu Durumu
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/server-status.yml"
+      - "scripts/update_status.py"
+permissions:
+  contents: write
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Check out site
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Query MTA official master list
+        run: python scripts/update_status.py
+      - name: Validate front-end JavaScript syntax
+        run: node --check assets/js/app.js
+      - name: Publish status data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/status.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh MTA server player count"
+            git push
+          fi
