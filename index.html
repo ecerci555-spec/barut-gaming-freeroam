@@ -38,7 +38,7 @@
         <a href="#features" data-i18n="navFeatures">Özellikler</a>
         <a href="#community" data-i18n="navCommunity">Topluluk</a>
         <a href="#rules" data-i18n="navRules">Kurallar</a>
-        <a href="#faq" data-i18n="navFaq">SSS</a>
+        <a href="#reports" data-i18n="navReports">Şikâyetler</a><a href="#suggestions" data-i18n="navIdeas">Script İstekleri</a><a href="#faq" data-i18n="navFaq">SSS</a>
       </nav>
       <div class="nav__right">
         <label class="lang-select" for="language" aria-label="Dil seçimi">
@@ -74,7 +74,7 @@
         </div>
         <div class="hero__visual">
           <div class="hero__halo" aria-hidden="true"></div>
-          <img src="assets/img/hero-city.svg" alt="Turuncu neon ışıklarla stilize edilmiş spor otomobil ve şehir manzarası" width="900" height="680">
+          <img class="hero__photo" src="https://images.unsplash.com/photo-1693550070208-532ea3b29f76?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Gece ışıklarında turuncu renkli gerçek spor otomobil" width="1400" height="900" fetchpriority="high">
           <div class="visual-tag visual-tag--top"><span class="visual-tag__square">✦</span><div><small>BARUT / WORLD</small><strong data-i18n="worldLabel">SINIRSIZ ÖZGÜRLÜK</strong></div></div>
           <div class="visual-tag visual-tag--bottom"><span class="signal" aria-hidden="true"><i></i><i></i><i></i></span><div><small data-i18n="statusCaption">SERVER STATUS</small><strong id="miniStatus" data-i18n="statusUnknown">BİLGİ BEKLENİYOR</strong></div></div>
         </div>
@@ -119,6 +119,49 @@
 
     <section class="section news" id="news" aria-labelledby="newsTitle"><div class="container"><div class="section-heading"><div><span class="kicker"><b>03</b> / <span data-i18n="newsKicker">HABER MERKEZİ</span></span><h2 id="newsTitle" data-i18n="newsTitle">SON <em>DUYURULAR.</em></h2></div><p data-i18n="newsDesc">Güncellemeler ve etkinlik duyuruları bu alanda yayınlanır.</p></div><div id="newsGrid" class="news-grid" aria-live="polite"></div><p class="news__note" data-i18n="newsNote">Duyurular yönetici tarafından site ayarlarından düzenlenebilir.</p></div></section>
 
+
+    <section class="section feedback-section reports" id="reports" aria-labelledby="reportsTitle">
+      <div class="container feedback-layout">
+        <div class="feedback-copy"><span class="kicker"><b>04</b> / BARUT DESTEK</span>
+          <h2 id="reportsTitle" data-i18n="reportsTitle">ŞİKÂYET <em>OLUŞTUR.</em></h2>
+          <p data-i18n="reportsDesc">Oyuncu ihlalleri, hata bildirimleri ve önerilerini ilet. İlgili bildirimleri GitHub üzerinden görüntüleyebilir ve takip edebilirsin.</p>
+          <a href="https://github.com/ecerci555-spec/barut-gaming-freeroam/issues?q=is%3Aissue+%22%5B%C5%9Eikayet%5D%22" target="_blank" rel="noopener noreferrer" class="feedback-admin-link">📋 <span data-i18n="seeReports">Şikâyetleri görüntüle</span> ↗</a>
+          <p class="feedback-notice" data-i18n="publicNotice">Not: Bildirimler herkese açık GitHub Issues sayfasına gönderilir. Şifre, telefon numarası veya kişisel bilgi paylaşma. Gönderim için ücretsiz GitHub hesabı gerekir.</p>
+        </div>
+        <form id="reportForm" class="feedback-form" data-kind="report">
+          <label for="reportName" data-i18n="nickname">Oyuncu adın (isteğe bağlı)</label>
+          <input id="reportName" name="nickname" maxlength="40" autocomplete="off" placeholder="Oyuncu adı / nickname">
+          <label for="reportTitle" data-i18n="reportSubject">Şikâyet konusu</label>
+          <input id="reportTitle" name="subject" maxlength="100" required placeholder="Örn. Oyuncu trol yapıyor">
+          <label for="reportText" data-i18n="reportDetail">Olayı açıkla</label>
+          <textarea id="reportText" name="details" maxlength="2500" minlength="10" required rows="5" placeholder="Ne oldu, ne zaman gerçekleşti?"></textarea>
+          <button class="btn btn--primary" type="submit"><span data-i18n="submitReport">ŞİKÂYET OLUŞTUR</span> ↗</button>
+          <small data-i18n="githubSignIn">GitHub hesabıyla oturum açıp son gönderimi onaylaman gerekir.</small>
+        </form>
+      </div>
+    </section>
+    <section class="section feedback-section suggestion-section" id="suggestions" aria-labelledby="suggestionsTitle">
+      <div class="container">
+        <div class="section-heading"><div><span class="kicker"><b>05</b> / TOPLULUK FİKİRLERİ</span>
+          <h2 id="suggestionsTitle" data-i18n="ideasTitle">SCRIPT <em>İSTEKLERİ.</em></h2></div>
+          <p data-i18n="ideasDesc">İstediğin sistemi öner, diğer oyuncuların isteklerini gör ve beğen.</p></div>
+        <div class="suggestions-layout">
+          <form id="ideaForm" class="feedback-form" data-kind="idea">
+            <h3 data-i18n="addIdea">YENİ SCRIPT ÖNER</h3>
+            <label for="ideaName" data-i18n="nickname">Oyuncu adın (isteğe bağlı)</label><input id="ideaName" name="nickname" maxlength="40" placeholder="Oyuncu adı / nickname" autocomplete="off">
+            <label for="ideaTitle" data-i18n="ideaSubject">Script adı</label><input id="ideaTitle" name="subject" required maxlength="100" placeholder="Örn. Gerçekçi araç tuning sistemi">
+            <label for="ideaText" data-i18n="ideaDetail">Nasıl çalışsın?</label><textarea id="ideaText" name="details" required minlength="10" maxlength="2500" rows="5" placeholder="Özelliklerini anlat..."></textarea>
+            <button class="btn btn--primary" type="submit"><span data-i18n="sendIdea">SCRIPT İSTEĞİ OLUŞTUR</span> ↗</button>
+            <small data-i18n="githubSignIn">GitHub hesabıyla oturum açıp son gönderimi onaylaman gerekir.</small>
+          </form>
+          <div class="ideas-feed"><div class="ideas-feed__head"><h3 data-i18n="communityIdeas">OYUNCULARIN İSTEKLERİ</h3>
+            <a href="https://github.com/ecerci555-spec/barut-gaming-freeroam/issues" target="_blank" rel="noopener noreferrer" data-i18n="allIdeas">Tümünü gör ↗</a></div>
+            <div id="ideasList" aria-live="polite"><p data-i18n="loadingIdeas">İstekler yükleniyor...</p></div>
+            <p class="feedback-notice" data-i18n="likeNotice">👍 Beğen düğmesi ilgili GitHub sayfasını açar. Orada 👍 tepkisi bırakarak destekleyebilirsin.</p>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="section rules" id="rules" aria-labelledby="rulesTitle"><div class="container rules__grid"><div class="rules__side"><span class="kicker"><b>04</b> / <span data-i18n="rulesKicker">SUNUCU KURALLARI</span></span><h2 id="rulesTitle" data-i18n="rulesTitle">SAYGI VARSA<br><em>EĞLENCE VAR.</em></h2><p data-i18n="rulesDesc">Herkes için keyifli bir oyun ortamı oluşturmak bizim elimizde.</p><span class="rules__watermark">BG.</span></div><ol class="rules__list" id="rulesList"></ol></div></section>
 
     <section class="section faq" id="faq" aria-labelledby="faqTitle"><div class="container faq__grid"><div><span class="kicker"><b>05</b> / <span data-i18n="faqKicker">YARDIM MERKEZİ</span></span><h2 id="faqTitle" data-i18n="faqTitle">MERAK <em>ETTİKLERİN.</em></h2><p class="faq__desc" data-i18n="faqDesc">Bağlantı, kurulum ve topluluk hakkında en çok sorulan sorular.</p><button class="btn btn--outline" data-action="discord" data-i18n="getHelp">TOPLULUKTAN DESTEK AL ↗</button></div><div id="faqList" class="faq__list"></div></div></section>
@@ -126,7 +169,7 @@
     <section class="final-cta"><div class="container final-cta__inner"><div><span class="kicker">BARUT GAMING / FREEROAM</span><h2 data-i18n="ctaTitle">YERİN HAZIR.<br><em>GAZA BAS.</em></h2><p data-i18n="ctaDesc">San Andreas seni bekliyor. Barut Gaming Freeroam'a katıl.</p></div><button class="btn btn--dark btn--large" data-action="join"><span data-i18n="playNow">OYUNA KATIL</span> ↗</button></div></section>
   </main>
 
-  <footer class="footer"><div class="container footer__top"><a class="brand" href="#top"><span class="brand__mark" aria-hidden="true">B</span><span class="brand__name">BARUT <b>GAMING</b><small>FREEROAM / MTA:SA</small></span></a><div class="footer__links"><a href="#features" data-i18n="navFeatures">Özellikler</a><a href="#rules" data-i18n="navRules">Kurallar</a><a href="#faq" data-i18n="navFaq">SSS</a><button data-action="discord">DISCORD ↗</button></div></div><div class="container footer__bottom"><span>© <span id="year">2026</span> BARUT GAMING. <span data-i18n="rights">Tüm hakları saklıdır.</span></span><span data-i18n="unofficial">Bağımsız MTA:SA topluluk sitesi.</span></div></footer>
+  <footer class="footer"><div class="container footer__top"><a class="brand" href="#top"><span class="brand__mark" aria-hidden="true">B</span><span class="brand__name">BARUT <b>GAMING</b><small>FREEROAM / MTA:SA</small></span></a><div class="footer__links"><a href="#features" data-i18n="navFeatures">Özellikler</a><a href="#rules" data-i18n="navRules">Kurallar</a><a href="#suggestions" data-i18n="navIdeas">Script İstekleri</a><a href="#faq" data-i18n="navFaq">SSS</a><button data-action="discord">DISCORD ↗</button></div></div><div class="container footer__bottom"><span>© <span id="year">2026</span> BARUT GAMING. <span data-i18n="rights">Tüm hakları saklıdır.</span></span><span data-i18n="unofficial">Bağımsız MTA:SA topluluk sitesi.</span> <a href="https://unsplash.com/photos/9pgQF-z5V9g" target="_blank" rel="noopener noreferrer" style="font-size:10px;color:#888">Fotoğraf: Wes Tindel / Unsplash</a></div></footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
   <button class="to-top" id="backTop" aria-label="Yukarı çık">↑</button>
