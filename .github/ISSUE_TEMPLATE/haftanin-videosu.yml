@@ -1,0 +1,67 @@
+name: "🎥 Haftanın Barut Gaming Videosunu Gönder"
+description: "Sunucuda çektiğin videoyu gönder; onaylanırsa Bu Haftaki Barut Gaming'den Kareler bölümünde yayınlanır."
+title: "[Haftanın Videosu] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🎥 Barut Gaming • Haftanın Videosu
+        Oyun içi videonu burada yöneticiye ilet. **Yalnızca yöneticinin onayladıkları web sitesinin vitrininde görünür.**
+        
+        **Gizlilik uyarısı:** Bu GitHub deposu herkese açık olduğundan gönderdiğin kayıt ve video bağlantıları GitHub üzerinde başvurudan itibaren **herkes tarafından görülebilir**. Özel bilgi, şifre, sesli konuşma veya kişisel görüntü paylaşma.
+        
+        **Video yükleme:** .mp4, .mov veya .webm. Ücretsiz GitHub depolarında video başına sınır genellikle **10 MB**; daha uzun kayıtlar için YouTube'a *liste dışı* video yükleyip bağlantısını yazabilirsin. GitHub hesabıyla giriş gerekir.
+  - type: input
+    id: player
+    attributes:
+      label: "Oyun içi nick"
+      description: "Gerçek adını değil, oyun içi adını yaz."
+      placeholder: "Örnek: BarutPlayer"
+    validations:
+      required: true
+  - type: input
+    id: video-title
+    attributes:
+      label: "Video başlığı"
+      placeholder: "Örnek: Barut Gaming gece drift etkinliği"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: "Video açıklaması"
+      placeholder: "Videoda neler olduğunu kısaca anlat."
+    validations:
+      required: true
+  - type: input
+    id: youtube
+    attributes:
+      label: "YouTube bağlantısı (isteğe bağlı)"
+      description: "Büyük videolar için YouTube liste dışı (unlisted) bağlantısını ekleyebilirsin."
+      placeholder: "https://youtu.be/..."
+    validations:
+      required: false
+  - type: upload
+    id: video
+    attributes:
+      label: "Video dosyası (isteğe bağlı)"
+      description: "MP4, MOV veya WebM oyun kaydını buraya seç ya da sürükle."
+    validations:
+      required: false
+      accept: ".mp4,.mov,.webm"
+  - type: upload
+    id: cover
+    attributes:
+      label: "Kapak fotoğrafı (isteğe bağlı)"
+      description: "Videonun öne çıkması için oyun içi ekran görüntüsü ekleyebilirsin."
+    validations:
+      required: false
+      accept: ".png,.jpg,.jpeg,.webp"
+  - type: checkboxes
+    id: permission
+    attributes:
+      label: "Yayın izni"
+      description: "Videonun siteye eklenmesi için onayını belirt."
+      options:
+        - label: "Bu kayıt bana ait; onaylanırsa Barut Gaming web sitesinde herkese açık yayınlanmasını kabul ediyorum."
+          required: true
