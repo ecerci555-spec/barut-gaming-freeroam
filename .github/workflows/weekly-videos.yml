@@ -1,0 +1,43 @@
+name: Barut Gaming - Haftanin Video Vitrini
+on:
+  issues:
+    types: [opened, edited, labeled, unlabeled, reopened, closed]
+  schedule:
+    - cron: "12 * * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/weekly-videos.yml"
+      - "scripts/build_weekly_videos.py"
+permissions:
+  contents: write
+  issues: write
+concurrency:
+  group: barut-weekly-video-vitrine
+  cancel-in-progress: false
+jobs:
+  build-vitrine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Make sure management labels exist and rebuild approved videos
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/build_weekly_videos.py
+      - name: Publish approved video JSON
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/weekly-videos.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh this week's approved Barut Gaming videos"
+            git push
+          fi
