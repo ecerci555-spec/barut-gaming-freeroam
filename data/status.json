@@ -1,10 +1,10 @@
 {
   "ip": "185.158.151.103",
   "port": 22003,
-  "online": null,
-  "players": null,
-  "maxPlayers": null,
-  "serverName": null,
+  "online": true,
+  "players": 1,
+  "maxPlayers": 100,
+  "serverName": "BARUT GAMING  | INTERNATIONAL FREEROAM | DRIFT/PVP | TR/EN/RU/BR",
   "source": "MTA master server list (https://mtasa.com/api/)",
-  "checkedAt": "2026-11-20T10:00:00+00:00"
+  "checkedAt": "2026-11-20T10:48:22+00:00"
 }
