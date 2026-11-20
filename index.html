@@ -56,7 +56,7 @@
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="stylesheet" href="assets/css/style.css?v=20261120-navigation-v5">
   <link rel="stylesheet" href="assets/css/weekly-videos.css?v=2">
-  <link rel="stylesheet" href="assets/css/account-v2.css?v=20261120a">
+  <link rel="stylesheet" href="assets/css/account-v2.css?v=20261120-account-menu-v2">
   <title>Barut Gaming | MTA:SA Freeroam Sunucusu – Oyna ve Katıl</title>
 </head>
 <body>
@@ -97,6 +97,7 @@
           <button type="button" class="header-auth__button header-auth__button--register" data-account-open="signup"><span data-account-i18n="register">KAYIT OL</span></button>
           <button type="button" class="header-auth__button header-auth__button--login" data-account-open="login"><span data-account-i18n="login">GİRİŞ YAP</span></button>
         </div>
+        <button type="button" class="header-account-manage" data-account-manage hidden><span data-account-i18n="accountLinks">HESAP İŞLEMLERİ</span></button>
         <button class="btn btn--small btn--primary desktop-join" data-action="join"><span data-i18n="playNow">OYUNA KATIL</span><span aria-hidden="true">↗</span></button>
         <a class="online-mini" href="#online-players" title="Çevrimiçi oyuncular"><span class="online-dot"></span><span id="navOnlineCount">— / —</span><small>ONLINE</small></a>
         <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Menüyü aç"><span></span><span></span><span></span></button>
@@ -108,6 +109,7 @@
         <button type="button" data-account-open="signup"><span data-account-i18n="register">KAYIT OL</span></button>
         <button type="button" data-account-open="login"><span data-account-i18n="login">GİRİŞ YAP</span></button>
       </div>
+      <button type="button" class="mobile-account-manage" data-account-manage hidden><span data-account-i18n="accountLinks">HESAP İŞLEMLERİ</span></button>
       <button class="btn btn--primary" data-action="join" data-i18n="playNow">OYUNA KATIL</button><a href="#online-players">🟢 <span id="mobileOnlineCount">— oyuncu</span></a>
     </nav>
   </header>
@@ -347,6 +349,10 @@
     <p id="accountDialogDescription" data-account-i18n="accountNotice">Barut Gaming'e özel web hesabı sistemi henüz aktif değil. Şimdilik topluluk şikâyeti ve script önerileri için ücretsiz GitHub hesabı kullanılıyor.</p>
     <a id="accountGithubAction" class="btn btn--primary account-dialog__action" href="https://github.com/signup" target="_blank" rel="noopener noreferrer">GITHUB'DA KAYIT OL ↗</a>
     <p class="account-dialog__small" data-account-i18n="gameAccountNotice">Bu işlem MTA:SA oyun hesabını oluşturmaz ve oyun şifreni istemez. Şifrelerini Barut Gaming sitesine girme.</p>
+    <div class="account-dialog__completion">
+      <button type="button" class="account-dialog__complete" data-account-complete data-account-i18n="completed">GITHUB İŞLEMİNİ TAMAMLADIM</button>
+      <p data-account-i18n="completionNotice">Bu tercih Kayıt Ol / Giriş Yap butonlarını gizler; GitHub oturumunu doğrulamaz.</p>
+    </div>
     <button type="button" class="account-dialog__secondary" data-account-close data-account-i18n="close">KAPAT</button>
   </dialog>
 
@@ -356,6 +362,6 @@
   <script src="assets/js/app.js"></script>
   <script src="assets/js/gallery.js" defer></script>
   <script src="assets/js/weekly-videos.js?v=2" defer></script>
-  <script src="assets/js/auth.js?v=20261120b" defer></script>
+  <script src="assets/js/auth.js?v=20261120-account-menu-v2" defer></script>
 </body>
 </html>
