@@ -45,7 +45,7 @@ body:
   - type: upload
     id: video
     attributes:
-      label: "🎬 MP4 / Video Dosyası Yükle (isteğe bağlı)"
+      label: "Video dosyası - MP4 / MOV / WebM yükle (isteğe bağlı)"
       description: "Bilgisayarından veya telefonundan MP4 (.mp4) dosyanı seç ya da sürükle. MOV ve WebM de kabul edilir. Ücretsiz hesaplarda videolar genellikle en fazla 10 MB olabilir."
     validations:
       required: false
