@@ -48,12 +48,13 @@
           </select>
         </label>
         <button class="btn btn--small btn--primary desktop-join" data-action="join"><span data-i18n="playNow">OYUNA KATIL</span><span aria-hidden="true">↗</span></button>
+        <a class="online-mini" href="#online-players" title="Çevrimiçi oyuncular"><span class="online-dot"></span><span id="navOnlineCount">— / —</span><small>ONLINE</small></a>
         <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Menüyü aç"><span></span><span></span><span></span></button>
       </div>
     </div>
     <nav class="mobile-nav" id="mobileNav" aria-label="Mobil menü" hidden>
       <a href="#top" data-i18n="navHome">Ana Sayfa</a><a href="#features" data-i18n="navFeatures">Özellikler</a><a href="#community" data-i18n="navCommunity">Topluluk</a><a href="#reports" data-i18n="navReports">Şikâyetler</a><a href="#suggestions" data-i18n="navIdeas">Script İstekleri</a><a href="#rules" data-i18n="navRules">Kurallar</a><a href="#faq" data-i18n="navFaq">SSS</a>
-      <button class="btn btn--primary" data-action="join" data-i18n="playNow">OYUNA KATIL</button>
+      <button class="btn btn--primary" data-action="join" data-i18n="playNow">OYUNA KATIL</button><a href="#online-players">🟢 <span id="mobileOnlineCount">— oyuncu</span></a>
     </nav>
   </header>
 
@@ -90,7 +91,12 @@
           <div class="server-panel__status"><span class="status-pip" id="statusPip"></span><div><small data-i18n="currentStatus">GÜNCEL DURUM</small><strong id="serverStatus" data-i18n="statusUnknown">BİLGİ BEKLENİYOR</strong></div><div class="server-panel__players" id="playersWrap" hidden><small data-i18n="playersOnline">OYUNCU SAYISI</small><strong id="playerCount">—</strong></div></div>
           <button class="btn btn--primary server-panel__button" data-action="join"><span data-i18n="connectToServer">SUNUCUYA BAĞLAN</span><span>↗</span></button>
         </div>
-        <p class="server-panel__hint" data-i18n="connectionHint">MTA:SA yüklüyse bağlan butonu oyunu açar. IP bilgisi yönetici tarafından tanımlanmalıdır.</p>
+        <div class="player-roster" id="online-players">
+          <div class="player-roster__title"><div><span class="kicker">◉ BARUT ONLINE</span><h3>ŞU AN <em>OYUNDA.</em></h3></div><span id="rosterCount">Bilgi kontrol ediliyor</span></div>
+          <div id="rosterList" class="player-roster__list" aria-live="polite"><span>Oyuncu isimleri için MTA sunucusu bağlantısı gerekiyor.</span></div>
+          <p class="roster-note">Oyuncu isimleri yalnızca MTA sunucusundaki <code>barut_website_bridge</code> kaynağı çalışıyorsa gösterilir; çevrimiçi oyuncu sayısı MTA sunucu listesinden alınır.</p>
+        </div>
+        <p class="server-panel__hint" data-i18n="connectionHint">MTA:SA bilgisayarda kuruluysa Oyuna Katıl butonu seni doğrudan 185.158.151.103:22003 adresine bağlar.</p>
       </div>
     </section>
 
@@ -128,16 +134,32 @@
           <a href="https://github.com/ecerci555-spec/barut-gaming-freeroam/issues?q=is%3Aissue+%22%5B%C5%9Eikayet%5D%22" target="_blank" rel="noopener noreferrer" class="feedback-admin-link">📋 <span data-i18n="seeReports">Şikâyetleri görüntüle</span> ↗</a>
           <p class="feedback-notice" data-i18n="publicNotice">Not: Bildirimler herkese açık GitHub Issues sayfasına gönderilir. Şifre, telefon numarası veya kişisel bilgi paylaşma. Gönderim için ücretsiz GitHub hesabı gerekir.</p>
         </div>
+
         <form id="reportForm" class="feedback-form" data-kind="report">
-          <label for="reportName" data-i18n="nickname">Oyuncu adın (isteğe bağlı)</label>
-          <input id="reportName" name="nickname" maxlength="40" autocomplete="off" placeholder="Oyuncu adı / nickname">
-          <label for="reportTitle" data-i18n="reportSubject">Şikâyet konusu</label>
-          <input id="reportTitle" name="subject" maxlength="100" required placeholder="Örn. Oyuncu trol yapıyor">
+          <div class="form-header"><span>🚨 BİLDİRİM FORMU</span><small>AYRINTILI ŞİKÂYET</small></div>
+          <label for="reportName" data-i18n="nickname">Oyun içi adın</label>
+          <input id="reportName" name="nickname" maxlength="40" autocomplete="off" placeholder="BarutPlayer" required>
+          <label for="reportAccused">Şikâyet edilen oyuncu</label>
+          <input id="reportAccused" name="accused" maxlength="50" required placeholder="Oyuncunun nicki">
+          <label for="reportCategory">İhlal türü</label>
+          <select id="reportCategory" name="category" required>
+            <option value="Troll / Rahatsız etme">Troll / Rahatsız etme</option>
+            <option value="Hile / Exploit">Hile / Exploit</option>
+            <option value="Hakaret / Taciz">Hakaret / Taciz</option>
+            <option value="Reklam / Spam">Reklam / Spam</option>
+            <option value="Admin / Yetkili şikâyeti">Admin / Yetkili şikâyeti</option>
+            <option value="TCT / Obje troll">TCT / Obje troll</option>
+            <option value="Diğer">Diğer</option>
+          </select>
+          <div class="form-pair"><div><label for="reportDate">Olay tarihi / saati</label><input id="reportDate" name="date" maxlength="40" required placeholder="2026-11-20 14:30"></div><div><label for="reportLocation">Olay yeri</label><input id="reportLocation" name="location" maxlength="75" placeholder="Los Santos"></div></div>
+          <label for="reportTitle">Şikâyet başlığı</label>
+          <input id="reportTitle" name="subject" maxlength="100" required placeholder="Örn. TCT alanında troll">
           <label for="reportText" data-i18n="reportDetail">Olayı açıkla</label>
-          <textarea id="reportText" name="details" maxlength="2500" minlength="10" required rows="5" placeholder="Ne oldu, ne zaman gerçekleşti?"></textarea>
-          <button class="btn btn--primary" type="submit"><span data-i18n="submitReport">ŞİKÂYET OLUŞTUR</span> ↗</button>
-          <small data-i18n="githubSignIn">GitHub hesabıyla oturum açıp son gönderimi onaylaman gerekir.</small>
-        </form>
+          <textarea id="reportText" name="details" maxlength="2500" minlength="10" required rows="5" placeholder="Ne oldu? Olayı ve varsa tanıkları anlat."></textarea>
+          <div class="upload-step"><b>📸 Fotoğraf / 🎬 Video kanıtı</b><p>Devam et butonuna basınca GitHub'ın ayrıntılı formuna geçeceksin. Oradaki <strong>Kanıt yükle</strong> alanından ekran görüntüsü veya oyun videosu seçebilirsin.</p><span>.png · .jpg · .mp4 · .mov · .webm</span></div>
+          <button class="btn btn--primary" type="submit">ŞİKÂYET VE KANIT EKLE ↗</button>
+          <small data-i18n="githubSignIn">Gönderiyi tamamlamak için ücretsiz GitHub hesabıyla giriş yapmalısın.</small>
+        </form> </form>
       </div>
     </section>
     <section class="section feedback-section suggestion-section" id="suggestions" aria-labelledby="suggestionsTitle">
@@ -148,10 +170,10 @@
         <div class="suggestions-layout">
           <form id="ideaForm" class="feedback-form" data-kind="idea">
             <h3 data-i18n="addIdea">YENİ SCRIPT ÖNER</h3>
-            <label for="ideaName" data-i18n="nickname">Oyuncu adın (isteğe bağlı)</label><input id="ideaName" name="nickname" maxlength="40" placeholder="Oyuncu adı / nickname" autocomplete="off">
-            <label for="ideaTitle" data-i18n="ideaSubject">Script adı</label><input id="ideaTitle" name="subject" required maxlength="100" placeholder="Örn. Gerçekçi araç tuning sistemi">
+            <label for="ideaName" data-i18n="nickname">Oyuncu adın (isteğe bağlı)</label><input id="ideaName" name="nickname" required maxlength="40" placeholder="Oyuncu adı / nickname" autocomplete="off">
+            <label for="ideaCategory">Script kategorisi</label><select id="ideaCategory" name="category"><option>Araç ve Tuning</option><option>Drift / Yarış</option><option>Freeroam</option><option>F1 / F2 / F4 / F5 Panelleri</option><option>TCT / Ev / Arsa</option><option>HUD / Grafik / Shader</option><option>Klan / Etkinlik</option><option>Ekonomi / Coin</option><option>Diğer</option></select><label for="ideaTitle" data-i18n="ideaSubject">Script adı</label><input id="ideaTitle" name="subject" required maxlength="100" placeholder="Örn. Gerçekçi araç tuning sistemi">
             <label for="ideaText" data-i18n="ideaDetail">Nasıl çalışsın?</label><textarea id="ideaText" name="details" required minlength="10" maxlength="2500" rows="5" placeholder="Özelliklerini anlat..."></textarea>
-            <button class="btn btn--primary" type="submit"><span data-i18n="sendIdea">SCRIPT İSTEĞİ OLUŞTUR</span> ↗</button>
+            <label for="ideaBenefit">Oyunculara faydası (isteğe bağlı)</label><textarea id="ideaBenefit" name="benefit" maxlength="700" rows="2" placeholder="Sunucuya ne kazandıracak?"></textarea><div class="upload-step"><b>🖼 Örnek tasarım / video</b><p>GitHub'daki sonraki adımda örnek görsel veya video ekleyebilirsin.</p></div><button class="btn btn--primary" type="submit"><span data-i18n="sendIdea">SCRIPT İSTEĞİ OLUŞTUR</span> ↗</button>
             <small data-i18n="githubSignIn">GitHub hesabıyla oturum açıp son gönderimi onaylaman gerekir.</small>
           </form>
           <div class="ideas-feed"><div class="ideas-feed__head"><h3 data-i18n="communityIdeas">OYUNCULARIN İSTEKLERİ</h3>
@@ -169,7 +191,7 @@
     <section class="final-cta"><div class="container final-cta__inner"><div><span class="kicker">BARUT GAMING / FREEROAM</span><h2 data-i18n="ctaTitle">YERİN HAZIR.<br><em>GAZA BAS.</em></h2><p data-i18n="ctaDesc">San Andreas seni bekliyor. Barut Gaming Freeroam'a katıl.</p></div><button class="btn btn--dark btn--large" data-action="join"><span data-i18n="playNow">OYUNA KATIL</span> ↗</button></div></section>
   </main>
 
-  <footer class="footer"><div class="container footer__top"><a class="brand" href="#top"><span class="brand__mark" aria-hidden="true">B</span><span class="brand__name">BARUT <b>GAMING</b><small>FREEROAM / MTA:SA</small></span></a><div class="footer__links"><a href="#features" data-i18n="navFeatures">Özellikler</a><a href="#rules" data-i18n="navRules">Kurallar</a><a href="#suggestions" data-i18n="navIdeas">Script İstekleri</a><a href="#faq" data-i18n="navFaq">SSS</a><button data-action="discord">DISCORD ↗</button></div></div><div class="container footer__bottom"><span>© <span id="year">2026</span> BARUT GAMING. <span data-i18n="rights">Tüm hakları saklıdır.</span></span><span data-i18n="unofficial">Bağımsız MTA:SA topluluk sitesi.</span> <a href="https://unsplash.com/photos/9pgQF-z5V9g" target="_blank" rel="noopener noreferrer" style="font-size:10px;color:#888">Fotoğraf: Wes Tindel / Unsplash</a></div></footer>
+  <footer class="footer"><div class="container footer__top"><a class="brand" href="#top"><span class="brand__mark" aria-hidden="true">B</span><span class="brand__name">BARUT <b>GAMING</b><small>FREEROAM / MTA:SA</small></span></a><div class="footer__links"><a href="admin.html" title="Yönetim paneli">YÖNETİM</a><a href="#features" data-i18n="navFeatures">Özellikler</a><a href="#rules" data-i18n="navRules">Kurallar</a><a href="#suggestions" data-i18n="navIdeas">Script İstekleri</a><a href="#faq" data-i18n="navFaq">SSS</a><button data-action="discord">DISCORD ↗</button></div></div><div class="container footer__bottom"><span>© <span id="year">2026</span> BARUT GAMING. <span data-i18n="rights">Tüm hakları saklıdır.</span></span><span data-i18n="unofficial">Bağımsız MTA:SA topluluk sitesi.</span> <a href="https://unsplash.com/photos/9pgQF-z5V9g" target="_blank" rel="noopener noreferrer" style="font-size:10px;color:#888">Fotoğraf: Wes Tindel / Unsplash</a></div></footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
   <button class="to-top" id="backTop" aria-label="Yukarı çık">↑</button>
