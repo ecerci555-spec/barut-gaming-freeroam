@@ -28,6 +28,10 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Validate weekly video feed and browser script syntax
+        run: |
+          python -m py_compile scripts/build_weekly_videos.py
+          node --check assets/js/weekly-videos.js
       - name: Make sure management labels exist and rebuild approved videos
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
