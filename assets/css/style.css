@@ -154,3 +154,97 @@
   .mobile-nav:not([hidden]){display:flex;flex-direction:column;gap:15px;padding:20px 24px;background:#0f1012;border-top:1px solid #363333}
   .mobile-nav a{font-size:12px;font-weight:750}
 }
+
+/* V5: Accessible full desktop navigation under the login/join actions.
+   Auth is external GitHub only. Do not fake a login state. */
+@media(min-width:1050px){
+  .site-header .nav{
+    display:grid !important;
+    grid-template-columns:max-content minmax(80px,1fr) max-content !important;
+    grid-template-rows:minmax(76px,auto) 51px !important;
+    gap:0 22px !important;
+    align-items:center !important;
+    min-height:127px !important;
+  }
+  .site-header .brand{
+    grid-column:1 !important;
+    grid-row:1 !important;
+    margin:0 !important;
+    min-width:0 !important;
+  }
+  .site-header .site-live-visitors{
+    grid-column:2 !important;
+    grid-row:1 !important;
+    justify-self:start !important;
+    margin:0 !important;
+    max-width:190px !important;
+  }
+  .site-header .nav__right{
+    grid-column:3 !important;
+    grid-row:1 !important;
+    margin:0 !important;
+    gap:10px !important;
+    justify-self:end !important;
+    display:flex !important;
+    align-items:center !important;
+  }
+  .site-header .desktop-nav{
+    grid-column:1 / -1 !important;
+    grid-row:2 !important;
+    display:flex !important;
+    justify-content:center !important;
+    align-items:center !important;
+    flex-wrap:wrap !important;
+    gap:8px clamp(13px,2vw,28px) !important;
+    margin:0 !important;
+    padding:9px 4px 10px !important;
+    border-top:1px solid #3b332e !important;
+  }
+  .site-header .desktop-nav a{
+    display:inline-flex;
+    align-items:center;
+    min-height:30px;
+    white-space:nowrap;
+    font-size:clamp(10px,.89vw,12px) !important;
+    font-weight:800 !important;
+    color:#ddd4d0 !important;
+    transition:color .18s;
+  }
+  .site-header .desktop-nav a:hover,
+  .site-header .desktop-nav a:focus-visible{color:#ff8529 !important}
+  .site-header .menu-toggle{display:none !important}
+  .site-header .header-auth{display:flex !important}
+  .site-header .desktop-join{display:inline-flex !important}
+}
+@media(min-width:1050px) and (max-width:1220px){
+  .site-header .nav{column-gap:12px !important}
+  .site-header .brand__name{font-size:21px !important}
+  .site-header .site-live-visitors{max-width:137px !important}
+  .site-header .site-live-visitors__label{font-size:8px !important}
+  .site-header .nav__right{gap:6px !important}
+  .site-header .header-auth{flex-basis:94px !important}
+  .site-header .online-mini{font-size:10px !important}
+  .site-header .lang-select{padding:8px !important}
+  .site-header .desktop-join{padding:10px 13px !important}
+}
+@media(max-width:1049px){
+  .site-header .desktop-nav{display:none !important}
+  .site-header .menu-toggle{display:block !important}
+  .site-header .nav{display:flex !important;min-height:74px !important}
+  .site-header .nav__right{margin-left:auto !important}
+  .site-header .mobile-nav:not([hidden]){
+    display:flex !important;
+    flex-direction:column;
+    gap:13px;
+    padding:20px max(15px,calc((100vw - 1180px)/2));
+    border-top:1px solid #3c312a;
+    background:#111315;
+  }
+  .site-header .mobile-nav a{
+    font-size:13px;
+    min-height:32px;
+    display:flex;
+    align-items:center;
+    font-weight:750;
+  }
+}
