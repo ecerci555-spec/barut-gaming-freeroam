@@ -6,6 +6,86 @@ import pathlib
 import urllib.error
 import urllib.request
 
+import re
+import socket
+
+def query_ase():
+    """Direct UDP ASE (MTA port + 123). Player list + count are from one live packet.
+    Returns None when UDP query isn't reachable; never invent player names.
+    """
+    with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as sock:
+        sock.settimeout(5)
+        sock.sendto(b"s", (IP, PORT + 123))
+        payload, address = sock.recvfrom(65535)
+    if address[0] != IP or not payload.startswith(b"EYE1"):
+        raise ValueError("Invalid ASE response")
+    offset = 4
+
+    def field():
+        nonlocal offset
+        if offset >= len(payload):
+            raise ValueError("Truncated ASE response")
+        size = payload[offset]
+        offset += 1
+        if size < 1 or offset + size - 1 > len(payload):
+            raise ValueError("Invalid ASE string length")
+        value = payload[offset:offset + size - 1].decode("utf-8", errors="replace")
+        offset += size - 1
+        return value
+
+    if field() != "mta":
+        raise ValueError("Incorrect ASE game header")
+    info = [field() for _ in range(8)]
+    count = int(info[6])
+    maximum = int(info[7])
+    if not (0 <= count <= maximum <= 10000):
+        raise ValueError("Invalid ASE player counts")
+
+    # Server custom rules end with the 0x01 marker.
+    for _ in range(100):
+        if offset >= len(payload):
+            raise ValueError("Truncated ASE rules")
+        if payload[offset] == 1:
+            offset += 1
+            break
+        field()
+        field()
+    else:
+        raise ValueError("Excessive ASE rules")
+
+    roster = []
+    for _ in range(1000):
+        if offset >= len(payload) or payload[offset] != 0x3f:
+            break
+        offset += 1
+        nickname = field()
+        if offset + 2 > len(payload):
+            raise ValueError("Truncated ASE player entry")
+        offset += 2  # Team and skin bytes
+        field()  # Score
+        field()  # Ping
+        if offset >= len(payload):
+            raise ValueError("Truncated ASE player time")
+        offset += 1
+        nickname = re.sub(r"#[0-9a-fA-F]{6}", "", nickname)
+        nickname = "".join(c for c in nickname if c.isprintable()).strip()[:48]
+        if nickname:
+            roster.append(nickname)
+    # Some servers intentionally hide names, so only claim availability if
+    # complete (or zero players).
+    available = len(roster) == count
+    return {
+        "online": True,
+        "players": count,
+        "maxPlayers": maximum,
+        "serverName": info[1][:160],
+        "playerNames": roster if available else [],
+        "playerNamesAvailable": available,
+        "source": "MTA direct ASE UDP query",
+        "countApproximate": False,
+    }
+
+
 IP = "185.158.151.103"
 PORT = 22003
 HTTP_PORT = 22005
@@ -24,6 +104,7 @@ def main():
         "playerNamesAvailable": False,
         "serverName": None,
         "source": "MTA master server list (https://mtasa.com/api/)",
+        "countApproximate": True,
         "checkedAt": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
     }
     try:
@@ -89,6 +170,14 @@ def main():
             print(f"Roster bridge returned {len(names)} public nicknames")
         except (urllib.error.URLError, TimeoutError, OSError, ValueError, json.JSONDecodeError) as exc:
             print(f"Roster bridge unavailable (this is optional): {exc}")
+
+    # Prefer direct server ASE query over the master list (which can lag).
+    try:
+        ase = query_ase()
+        status.update(ase)
+        print(f"ASE live result: {status['players']}/{status['maxPlayers']}; names available: {status['playerNamesAvailable']}")
+    except (socket.timeout, OSError, ValueError, IndexError) as exc:
+        print(f"Direct ASE query unavailable: {exc}; master list is approximate.")
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(status, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
