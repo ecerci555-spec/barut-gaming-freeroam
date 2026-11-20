@@ -1,0 +1,50 @@
+
+/* BARUT GAMING • weekly moderated gaming videos */
+.weekly-videos{position:relative;padding:86px 0 95px;background:radial-gradient(ellipse at 86% 5%,#64280d38,transparent 44%),#0d0e10;border-bottom:1px solid #443021;scroll-margin-top:155px}
+.weekly-videos .section-heading{align-items:center;gap:25px;margin-bottom:28px}
+.weekly-videos h2{font-size:clamp(36px,4.9vw,67px);line-height:1.07;max-width:690px}
+.weekly-videos__lede{font-size:13px;max-width:360px}
+.weekly-videos__headline{display:flex;align-items:center;gap:13px;color:#b9baae;font-size:11px;letter-spacing:.12em;font-weight:800}
+.weekly-videos__pulse{display:inline-block;width:7px;height:7px;background:#fe7a19;border-radius:50%;box-shadow:0 0 12px #ff7e21}
+.weekly-videos__status{min-height:38px;font-size:12px;color:#b9b3ae;margin:10px 0 13px}
+.weekly-videos__cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;margin-bottom:35px}
+.weekly-video-card{min-width:0;background:#16181a;border:1px solid #49392e;border-radius:10px;overflow:hidden;transition:transform .2s,border-color .2s}
+.weekly-video-card:hover{transform:translateY(-4px);border-color:#ff8a34}
+.weekly-video-card__trigger{width:100%;display:block;background:none;border:0;padding:0;color:inherit;text-align:left;cursor:pointer}
+.weekly-video-card__thumb{display:grid;place-items:center;position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:linear-gradient(140deg,#1c1f22,#4f260e)}
+.weekly-video-card__thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.weekly-video-card:hover img{transform:scale(1.045)}
+.weekly-video-card__logo{font:900 35px 'Barlow Condensed',Impact,sans-serif;letter-spacing:.06em;color:#ff9247}
+.weekly-video-card__play{position:relative;z-index:1;display:grid;place-items:center;width:53px;height:53px;border:2px solid #ffab5b;border-radius:50%;background:#fa7919db;color:#17100c;font-size:18px;padding-left:4px;box-shadow:0 6px 30px #0009}
+.weekly-video-card__body{padding:18px}
+.weekly-video-card__meta{display:flex;justify-content:space-between;gap:9px;color:#fda365;font-size:10px;font-weight:850;letter-spacing:.08em;overflow-wrap:anywhere}
+.weekly-video-card__meta time{white-space:nowrap;color:#aca5a1}
+.weekly-video-card h3{font-size:27px;line-height:1.13;overflow-wrap:anywhere;margin:14px 0 9px}
+.weekly-video-card p{font-size:11px;color:#bcb8b5;line-height:1.6;max-height:63px;overflow:hidden;margin:0 0 14px}
+.weekly-video-card__watch{font-size:10px;color:#ff9448;font-weight:900;letter-spacing:.09em}
+.weekly-videos__submission{display:grid;grid-template-columns:.93fr 1.07fr;gap:45px;align-items:center;padding:30px;background:linear-gradient(132deg,#2c1b11,#131416 61%);border:1px solid #74431f;border-left:4px solid #ff731a;border-radius:10px}
+.weekly-videos__submission h3{font-size:clamp(30px,3.6vw,46px);margin:13px 0}
+.weekly-videos__submission p{font-size:12px;line-height:1.75}
+.weekly-videos__submission ul{padding:0 0 0 19px;color:#c5b7af;font-size:12px;line-height:1.8}
+.weekly-videos__note{font-size:10px!important;color:#c2a18c!important;line-height:1.6!important}
+.weekly-video-form{display:flex;flex-direction:column;gap:10px;min-width:0}
+.weekly-video-form label{font-size:11px;font-weight:900;color:#e9e1dc;letter-spacing:.04em}
+.weekly-video-form input,.weekly-video-form textarea{display:block;width:100%;background:#101215;border:1px solid #4b413a;border-radius:5px;padding:13px 14px;color:#fff;outline:0;font:12px Inter,Arial,sans-serif}
+.weekly-video-form textarea{resize:vertical;min-height:95px}
+.weekly-video-form input:focus,.weekly-video-form textarea:focus{border-color:#ff7a16;box-shadow:0 0 0 2px #ff720017}
+.weekly-video-form button{width:100%;margin-top:7px}
+.weekly-video-form small{font-size:10px;color:#aca6a3;line-height:1.6}
+.weekly-video-form small strong{color:#ffb37c}
+.weekly-video-form .weekly-video-help{font-size:11px;color:#ffa054;margin:0}
+.weekly-video-dialog{position:fixed;inset:0;margin:auto;width:min(850px,calc(100vw - 26px));max-width:calc(100vw - 26px);max-height:91vh;background:#0e1114;border:1px solid #ff7426;border-radius:9px;color:white;padding:24px;overflow-y:auto;box-shadow:0 25px 80px #000d}
+.weekly-video-dialog:not([open]){display:none}
+.weekly-video-dialog::backdrop{background:#020304e0;backdrop-filter:blur(7px)}
+.weekly-video-dialog h3{font-size:clamp(25px,4.2vw,37px);padding-right:40px;margin:0 0 16px}
+.weekly-video-dialog__close{position:absolute;top:15px;right:15px;width:35px;height:35px;border-radius:5px;border:1px solid #75482b;background:#281d17;color:white;font-size:24px;cursor:pointer}
+.weekly-video__iframe,.weekly-video__native{display:block;width:100%;aspect-ratio:16/9;min-height:0;max-height:65vh;border:0;border-radius:5px;background:#090a0b}
+.weekly-video-dialog__footer{padding-top:17px}
+.weekly-video-dialog__footer a{font-size:12px;color:#ffb07b;font-weight:800}
+.weekly-video-dialog__footer a:hover{text-decoration:underline}
+.weekly-video-dialog .weekly-video__native+p{font-size:11px;color:#999}
+@media(max-width:1100px){.weekly-videos__cards{grid-template-columns:repeat(2,minmax(0,1fr))}.weekly-videos__submission{gap:22px}.weekly-videos__submission h3{font-size:35px}}
+@media(max-width:760px){.weekly-videos{padding:62px 0}.weekly-videos .section-heading{display:block}.weekly-videos__cards,.weekly-videos__submission{grid-template-columns:1fr}.weekly-videos__submission{padding:22px;gap:14px}.weekly-videos h2{font-size:39px}.weekly-videos__cards{gap:12px}.weekly-video-dialog{padding:17px}.weekly-video-card h3{font-size:24px}}
