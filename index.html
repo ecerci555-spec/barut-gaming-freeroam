@@ -55,6 +55,7 @@
   </script>
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="stylesheet" href="assets/css/style.css?v=20261120-navigation-v5">
+  <link rel="stylesheet" href="assets/css/weekly-videos.css?v=1">
   <link rel="stylesheet" href="assets/css/account-v2.css?v=20261120a">
   <title>Barut Gaming | MTA:SA Freeroam Sunucusu – Oyna ve Katıl</title>
 </head>
@@ -80,7 +81,7 @@
 </div>
       <nav class="desktop-nav" aria-label="Ana menü">
         <a href="#top" data-i18n="navHome">Ana Sayfa</a>
-        <a href="#features" data-i18n="navFeatures">Özellikler</a><a href="#galeri" class="gallery-nav-link" data-gallery-nav hidden>Galeri</a>
+        <a href="#features" data-i18n="navFeatures">Özellikler</a><a href="#galeri" class="gallery-nav-link" data-gallery-nav hidden>Galeri</a><a href="#haftanin-kareleri">Haftanın Videoları</a>
         <a href="#community" data-i18n="navCommunity">Topluluk</a>
         <a href="#rules" data-i18n="navRules">Kurallar</a>
         <a href="#reports" data-i18n="navReports">Şikâyetler</a><a href="#suggestions" data-i18n="navIdeas">Script İstekleri</a><a href="#faq" data-i18n="navFaq">SSS</a>
@@ -102,7 +103,7 @@
       </div>
     </div>
     <nav class="mobile-nav" id="mobileNav" aria-label="Mobil menü" hidden>
-      <a href="#top" data-i18n="navHome">Ana Sayfa</a><a href="#features" data-i18n="navFeatures">Özellikler</a><a href="#galeri" class="gallery-nav-link" data-gallery-nav hidden>Galeri</a><a href="#community" data-i18n="navCommunity">Topluluk</a><a href="#reports" data-i18n="navReports">Şikâyetler</a><a href="#suggestions" data-i18n="navIdeas">Script İstekleri</a><a href="#rules" data-i18n="navRules">Kurallar</a><a href="#faq" data-i18n="navFaq">SSS</a>
+      <a href="#top" data-i18n="navHome">Ana Sayfa</a><a href="#features" data-i18n="navFeatures">Özellikler</a><a href="#galeri" class="gallery-nav-link" data-gallery-nav hidden>Galeri</a><a href="#haftanin-kareleri">Haftanın Videoları</a><a href="#community" data-i18n="navCommunity">Topluluk</a><a href="#reports" data-i18n="navReports">Şikâyetler</a><a href="#suggestions" data-i18n="navIdeas">Script İstekleri</a><a href="#rules" data-i18n="navRules">Kurallar</a><a href="#faq" data-i18n="navFaq">SSS</a>
       <div class="mobile-auth" role="group" aria-label="Kullanıcı hesabı">
         <button type="button" data-account-open="signup"><span data-account-i18n="register">KAYIT OL</span></button>
         <button type="button" data-account-open="login"><span data-account-i18n="login">GİRİŞ YAP</span></button>
@@ -156,6 +157,51 @@
       <button class="gallery-lightbox__close" type="button" data-gallery-close aria-label="Kapat">×</button>
       <img id="galleryLightboxImg" alt="" decoding="async">
       <div class="gallery-lightbox__meta"><span id="galleryLightboxCategory">BARUT GAMING</span><h3 id="galleryLightboxTitle"></h3></div>
+    </dialog>
+
+    <section class="weekly-videos" id="haftanin-kareleri" aria-labelledby="weeklyTitle">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="kicker">🎥 BARUT GAMING / OYUNCU VİDEOLARI</span>
+            <h2 id="weeklyTitle">BU HAFTAKİ<br><em>BARUT GAMING'DEN KARELER.</em></h2></div>
+          <p class="weekly-videos__lede">Oyuncularımızın çektiği drift, yarış ve freeroam videoları. Yalnızca yönetici tarafından onaylanan kayıtlar burada yayınlanır.</p>
+        </div>
+        <div class="weekly-videos__headline"><span class="weekly-videos__pulse"></span> TOPLULUK VİTRİNİ / BU HAFTA</div>
+        <p class="weekly-videos__status" id="weeklyVideosState" role="status" aria-live="polite">Onaylı videolar yükleniyor...</p>
+        <div class="weekly-videos__cards" id="weeklyVideosGrid" aria-label="Bu haftanın onaylı videoları"></div>
+        <div class="weekly-videos__submission" id="video-gonder">
+          <div>
+            <span class="kicker">🎬 BARUT GAMING / İÇERİK GÖNDER</span>
+            <h3>SENİN VİDEON DA<br><em>BURADA OLSUN.</em></h3>
+            <p>Sunucumuzda güzel bir an mı yakaladın? Oyundaki adını, video başlığını ve açıklamasını yaz. Sonraki ekranda kaydını yükle; onaylandığında haftanın vitrininde gözüksün.</p>
+            <ul>
+              <li>Drift, yarış, eğlenceli anlar ve etkinlikler</li>
+              <li>MP4 / MOV / WebM yükleme veya YouTube bağlantısı</li>
+              <li>Yönetici incelemesinden sonra haftalık yayın</li>
+            </ul>
+            <p class="weekly-videos__note">Gönderim için GitHub hesabı gerekir. Başvurular GitHub üzerinde herkese açıktır; özel bilgi paylaşmayın. Ücretsiz GitHub depolarında video yükleme sınırı genellikle 10 MB'dır. Büyük kayıtlar için YouTube'da liste dışı bağlantı kullanın.</p>
+          </div>
+          <form class="weekly-video-form" id="weeklyVideoForm">
+            <label for="weeklyNick">OYUN İÇİ ADIN</label>
+            <input id="weeklyNick" name="player" type="text" minlength="2" maxlength="44" autocomplete="off" required placeholder="Örnek: BarutPlayer">
+            <label for="weeklyTitleInput">VİDEO BAŞLIĞI</label>
+            <input id="weeklyTitleInput" name="video-title" type="text" minlength="4" maxlength="90" required placeholder="Örnek: Barut Gaming'de Gece Drifti">
+            <label for="weeklyDescription">VİDEO AÇIKLAMASI</label>
+            <textarea id="weeklyDescription" name="description" minlength="10" maxlength="550" rows="3" required placeholder="Videoda neler oluyor?"></textarea>
+            <label for="weeklyYoutube">YOUTUBE VİDEO LİNKİ (İSTEĞE BAĞLI)</label>
+            <input id="weeklyYoutube" name="youtube" type="url" maxlength="300" placeholder="https://youtu.be/...">
+            <p id="weeklyVideoHelp" class="weekly-video-help" aria-live="polite"></p>
+            <button class="btn btn--primary" type="submit">🎥 VİDEO GÖNDER / DOSYA YÜKLE ↗</button>
+            <small>Devam ettiğinde <strong>GitHub formu</strong> açılır. Video dosyanı orada seçerek gönderimi tamamlayabilirsin. Web sitesinde doğrudan dosya yüklenmez.</small>
+          </form>
+        </div>
+      </div>
+    </section>
+    <dialog class="weekly-video-dialog" id="weeklyVideoDialog" aria-labelledby="weeklyVideoDialogTitle">
+      <button type="button" class="weekly-video-dialog__close" data-weekly-close aria-label="Videoyu kapat">×</button>
+      <h3 id="weeklyVideoDialogTitle">BARUT GAMING • VİDEO</h3>
+      <div id="weeklyVideoPlayer"></div>
+      <div class="weekly-video-dialog__footer"><a id="weeklyVideoSource" target="_blank" rel="noopener noreferrer" href="https://github.com/ecerci555-spec/barut-gaming-freeroam/issues">KAYDIN ORİJİNALİNİ AÇ ↗</a></div>
     </dialog>
 
     <section class="server-panel section-top" id="connect" aria-labelledby="connectTitle">
@@ -286,7 +332,7 @@
     <section class="final-cta"><div class="container final-cta__inner"><div><span class="kicker">BARUT GAMING / FREEROAM</span><h2 data-i18n="ctaTitle">YERİN HAZIR.<br><em>GAZA BAS.</em></h2><p data-i18n="ctaDesc">San Andreas seni bekliyor. Barut Gaming Freeroam'a katıl.</p></div><button class="btn btn--dark btn--large" data-action="join"><span data-i18n="playNow">OYUNA KATIL</span> ↗</button></div></section>
   </main>
 
-  <footer class="footer"><div class="container footer__top"><a class="brand" href="#top"><span class="brand__mark" aria-hidden="true">B</span><span class="brand__name">BARUT <b>GAMING</b><small>FREEROAM / MTA:SA</small></span></a><div class="footer__links"><a href="#features" data-i18n="navFeatures">Özellikler</a><a href="#galeri" class="gallery-nav-link" data-gallery-nav hidden>Galeri</a><a href="#rules" data-i18n="navRules">Kurallar</a><a href="#suggestions" data-i18n="navIdeas">Script İstekleri</a><a href="#faq" data-i18n="navFaq">SSS</a><button data-action="discord">DISCORD ↗</button></div></div><div class="container footer__bottom"><span>© <span id="year">2026</span> BARUT GAMING. <span data-i18n="rights">Tüm hakları saklıdır.</span></span><span data-i18n="unofficial">Bağımsız MTA:SA topluluk sitesi.</span> <a href="https://whos.amung.us/legal/privacy/" target="_blank" rel="noopener noreferrer" style="font-size:10px;color:#888">Ziyaretçi sayacı bilgisi</a> <a href="https://unsplash.com/photos/9pgQF-z5V9g" target="_blank" rel="noopener noreferrer" style="font-size:10px;color:#888">Fotoğraf: Wes Tindel / Unsplash</a></div></footer>
+  <footer class="footer"><div class="container footer__top"><a class="brand" href="#top"><span class="brand__mark" aria-hidden="true">B</span><span class="brand__name">BARUT <b>GAMING</b><small>FREEROAM / MTA:SA</small></span></a><div class="footer__links"><a href="#features" data-i18n="navFeatures">Özellikler</a><a href="#galeri" class="gallery-nav-link" data-gallery-nav hidden>Galeri</a><a href="#haftanin-kareleri">Haftanın Videoları</a><a href="#rules" data-i18n="navRules">Kurallar</a><a href="#suggestions" data-i18n="navIdeas">Script İstekleri</a><a href="#faq" data-i18n="navFaq">SSS</a><button data-action="discord">DISCORD ↗</button></div></div><div class="container footer__bottom"><span>© <span id="year">2026</span> BARUT GAMING. <span data-i18n="rights">Tüm hakları saklıdır.</span></span><span data-i18n="unofficial">Bağımsız MTA:SA topluluk sitesi.</span> <a href="https://whos.amung.us/legal/privacy/" target="_blank" rel="noopener noreferrer" style="font-size:10px;color:#888">Ziyaretçi sayacı bilgisi</a> <a href="https://unsplash.com/photos/9pgQF-z5V9g" target="_blank" rel="noopener noreferrer" style="font-size:10px;color:#888">Fotoğraf: Wes Tindel / Unsplash</a></div></footer>
 
     <dialog id="accountDialog" class="account-dialog" aria-labelledby="accountDialogTitle" aria-describedby="accountDialogDescription">
     <button type="button" class="account-dialog__close" data-account-close aria-label="Kapat">×</button>
@@ -304,6 +350,7 @@
   <script src="config.js"></script>
   <script src="assets/js/app.js"></script>
   <script src="assets/js/gallery.js" defer></script>
+  <script src="assets/js/weekly-videos.js?v=1" defer></script>
   <script src="assets/js/auth.js?v=20261120b" defer></script>
 </body>
 </html>
