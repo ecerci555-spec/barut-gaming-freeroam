@@ -1,0 +1,5 @@
+<meta>
+    <info author="Barut Gaming" name="Barut Gaming Website Player Bridge" version="1.0.0" type="script" description="Public online nicknames only for the Barut Gaming website" />
+    <script src="server.lua" type="server" />
+    <export function="httpRouter" http="true" router="true" />
+</meta>
