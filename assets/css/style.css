@@ -148,3 +148,9 @@
 @media(max-width:1550px){.desktop-nav{display:none!important}.menu-toggle{display:block}.nav__right{margin-left:auto}.nav{gap:13px}}
 @media(min-width:761px) and (max-width:890px){.nav{gap:7px}.site-live-visitors{max-width:114px}.site-live-visitors__label{font-size:7px}.header-auth{flex-basis:93px}.online-mini{font-size:9px}.nav__right{gap:5px}}
 @media(max-width:760px){.header-auth{display:none}.photo-gallery{padding-top:53px;padding-bottom:57px}.account-dialog{padding:23px}.account-dialog__brand{margin-bottom:22px}}
+
+/* The compact hamburger navigation remains usable on 1101–1550px screens too. */
+@media(max-width:1550px){
+  .mobile-nav:not([hidden]){display:flex;flex-direction:column;gap:15px;padding:20px 24px;background:#0f1012;border-top:1px solid #363333}
+  .mobile-nav a{font-size:12px;font-weight:750}
+}
