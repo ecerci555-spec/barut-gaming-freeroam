@@ -2,12 +2,14 @@
   "ip": "185.158.151.103",
   "port": 22003,
   "online": true,
-  "players": 0,
+  "players": 1,
   "maxPlayers": 100,
-  "playerNames": [],
+  "playerNames": [
+    "Emre12"
+  ],
   "playerNamesAvailable": true,
   "serverName": "MTA Turkiye | BARUT GAMING |FREEROAM |DRIFT/PVP | TURK/TR/EN/RU/BR",
   "source": "MTA direct ASE UDP query",
   "countApproximate": false,
-  "checkedAt": "2026-11-24T07:56:26+00:00"
+  "checkedAt": "2026-11-24T08:53:37+00:00"
 }
