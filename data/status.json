@@ -4,12 +4,10 @@
   "online": true,
   "players": 1,
   "maxPlayers": 100,
-  "playerNames": [
-    "Emre"
-  ],
-  "playerNamesAvailable": true,
+  "playerNames": [],
+  "playerNamesAvailable": false,
   "serverName": "MTA Türkiye ♥ BARUT GAMİNG FREEROAM ♥ [Araba/Drift/Klan/Turf/Tag/Drop/Ankara/Br/En]",
-  "source": "MTA direct ASE UDP query",
-  "countApproximate": false,
-  "checkedAt": "2026-11-25T18:17:04+00:00"
+  "source": "MTA master server list (https://mtasa.com/api/)",
+  "countApproximate": true,
+  "checkedAt": "2026-11-25T19:13:40+00:00"
 }
