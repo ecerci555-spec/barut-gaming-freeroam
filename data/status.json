@@ -2,12 +2,14 @@
   "ip": "185.158.151.103",
   "port": 22003,
   "online": true,
-  "players": 0,
+  "players": 1,
   "maxPlayers": 100,
-  "playerNames": [],
-  "playerNamesAvailable": false,
+  "playerNames": [
+    "Emre"
+  ],
+  "playerNamesAvailable": true,
   "serverName": "MTA Türkiye ♥ BARUT GAMİNG FREEROAM ♥ [Araba/Drift/Klan/Turf/Tag/Drop/Ankara/Br/En]",
-  "source": "MTA master server list (https://mtasa.com/api/)",
-  "countApproximate": true,
-  "checkedAt": "2026-11-28T06:39:21+00:00"
+  "source": "MTA direct ASE UDP query",
+  "countApproximate": false,
+  "checkedAt": "2026-11-28T07:53:41+00:00"
 }
